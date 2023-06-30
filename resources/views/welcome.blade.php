@@ -26,7 +26,9 @@
             modi sequi et quisquam beatae libero
             natus neque accusamus, rerum ipsa expedita deleniti mollitia deserunt ut dolorem alias tenetur? Iure?</p>
 
-
+        <span>ok
+            <i class="bi-alarm"></i>
+        </span>
         <button @click="open = ! open"
             class="rounded-lg px-4 py-2 font-ubuntu font-medium text-sm bg-green-500 inline-block my-2 text-white">Toggle
             text
