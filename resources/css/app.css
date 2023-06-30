@@ -1,3 +1,70 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    body {
+        @apply font-normal;
+    }
+
+    .active {
+        @apply bg-primary;
+    }
+    .alert-success {
+        @apply text-green-500 border-green-600;
+    }
+    .alert-error {
+        @apply text-red-500 border-red-600;
+    }
+    label {
+        @apply text-gray-500;
+    }
+
+    .btn {
+        @apply border rounded-lg px-4 py-2 font-medium;
+    }
+
+    .btn-sm {
+        @apply border rounded-lg px-2 py-1 text-sm font-medium;
+    }
+
+    .btn-lg {
+        @apply border rounded-lg px-8 py-4 text-xl font-medium;
+    }
+
+    .submit,
+    .submit-primary {
+        @apply btn;
+    }
+
+    .btn-primary,
+    .submit-primary {
+        @apply text-white bg-primary border-primary;
+    }
+    .btn-primary:hover {
+        @apply text-primary bg-white font-medium;
+    }
+    .btn-secondary,
+    .submit-secondary {
+        @apply text-white bg-secondary border-secondary;
+    }
+    .btn-secondary:hover {
+        @apply text-secondary bg-white font-medium;
+    }
+    .btn-primary-outline {
+        @apply text-primary bg-white border-primary;
+    }
+    .btn-primary-outline:hover {
+        @apply text-white bg-primary font-medium;
+    }
+    .btn-secondary-outline {
+        @apply text-secondary bg-white border-secondary;
+    }
+    .btn-secondary-outline:hover {
+        @apply text-white bg-secondary;
+    }
+
+    .tt {
+        @apply transition transform duration-500;
+    }
+}
