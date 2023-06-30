@@ -16,6 +16,8 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+
+        @livewireStyles
     </head>
 
     <body class="antialiased p-4" x-data="{open:true}">
@@ -29,6 +31,7 @@
 
         <button @click="open = ! open"
             class="rounded-lg px-4 py-2 text-sm bg-green-500 inline-block my-2 text-white">Toggle text</button>
+        @livewireScripts
     </body>
 
 </html>
