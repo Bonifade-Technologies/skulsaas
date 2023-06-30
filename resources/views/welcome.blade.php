@@ -26,10 +26,6 @@
             adipisicing elit. Sunt
             corporis
             modi sequi et quisquam beatae libero
-<<<<<<< HEAD
-        <div class="text-xxl">{{ done() }}</div>
-        natus neque accusamus, rerum ipsa expedita deleniti mollitia deserunt ut dolorem alias tenetur? Iure?</p>
-=======
             natus neque accusamus, rerum ipsa expedita deleniti mollitia deserunt ut dolorem alias tenetur? Iure?</p>
 
 
@@ -40,7 +36,6 @@
             @livewire('counter')
         </div>
         @livewireScripts
->>>>>>> assets
     </body>
 
 </html>
