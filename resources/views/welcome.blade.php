@@ -4,6 +4,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Laravel</title>
 
@@ -18,6 +20,7 @@
         </style>
 
         @livewireStyles
+        @stack('styles')
     </head>
 
     <body class="antialiased p-4" x-data="{open:true}">
@@ -36,6 +39,44 @@
             @livewire('counter')
         </div>
         @livewireScripts
+
+
+        {{-- sweetalert --}}
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            // success message
+            window.addEventListener('swal:success', function(e) {
+              Swal.fire(e.detail);
+            });
+        
+            window.addEventListener('swal:confirm', event => {
+              Swal.fire({
+                title: 'Are you sure?'
+                , text: "You won\'t be able to revert this!"
+                , icon: 'question'
+                , showCancelButton: true
+                , confirmButtonColor: '#0d2364'
+                , cancelButtonColor: '#f11'
+                , confirmButtonText: 'Yes delete it'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Livewire.emit('deleteConfirm');
+                  // Swal.fire(
+                  //   'Deleted!'
+                  //   , 'Your file has been deleted'
+                  //   , 'success'
+                  // )
+                }
+              });
+            });
+        
+            $(function() {
+              $('[data-toggle="tooltip"]').tooltip()
+            })
+        
+        </script>
+
+        @stack('scripts')
     </body>
 
 </html>
