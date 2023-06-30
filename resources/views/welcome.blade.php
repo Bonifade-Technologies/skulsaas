@@ -32,7 +32,15 @@
             text
             <span><i class="fa-brands fa-facebook fa-2x"></i></span>
         </button>
+        <p class="flex space-x-4">
+            <i class="fa-sharp fa-light fa-book fa-2x"></i>
+            <i class="fa-light fa-book"></i>
+            <span class="text-lg bg-red-500 rounded-full p-2 aspect-square">
+                <i class="fa-regular fa-book-open-reader"></i>
+            </span>
+        </p>
 
+        <img src="{{ Vite::asset('resources/svgs/linkedin.svg') }}" alt="ok done">
         <div class="">
             @livewire('counter')
         </div>
