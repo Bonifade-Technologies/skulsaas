@@ -18,12 +18,17 @@
         </style>
     </head>
 
-    <body class="antialiased p-4">
+    <body class="antialiased p-4" x-data="{open:true}">
         <h2 class="text-xl font-medium text-center">Home Page testing</h2>
-        <p class="p-3 bg-blue-600 text-white rounded-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+        <p x-show="open" class="p-3 bg-blue-600 text-white rounded-lg">Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Sunt
             corporis
             modi sequi et quisquam beatae libero
             natus neque accusamus, rerum ipsa expedita deleniti mollitia deserunt ut dolorem alias tenetur? Iure?</p>
+
+
+        <button @click="open = ! open"
+            class="rounded-lg px-4 py-2 text-sm bg-green-500 inline-block my-2 text-white">Toggle text</button>
     </body>
 
 </html>
