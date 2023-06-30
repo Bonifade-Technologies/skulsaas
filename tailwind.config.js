@@ -8,6 +8,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        roboto: ["'Roboto Slab', serif'"],
+        ubuntu: ["'Ubuntu', sans-serif'"]
+      },
       colors: {
         primary: "#dc0956",
       },
