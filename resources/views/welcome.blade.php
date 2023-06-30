@@ -11,21 +11,16 @@
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-        @vite(['resources/css/app.css','resources/js/app.js'])
-
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
+        @vite(['resources/css/app.css','resources/scss/main.scss', 'resources/js/app.js'])
 
         @livewireStyles
         @stack('styles')
     </head>
 
-    <body class="antialiased p-4" x-data="{open:true}">
+    <body class="antialiased  p-4" x-data="{open:true}">
         <h2 class="text-xl font-medium text-center">Home Page testing</h2>
-        <p x-show="open" class="p-3 bg-blue-600 text-white rounded-lg">Lorem ipsum dolor sit amet consectetur
+        <p x-show="open" class="p-3 bg-blue-600 text-white rounded-lg font-roboto">Lorem ipsum dolor sit amet
+            consectetur
             adipisicing elit. Sunt
             corporis
             modi sequi et quisquam beatae libero
@@ -33,7 +28,10 @@
 
 
         <button @click="open = ! open"
-            class="rounded-lg px-4 py-2 text-sm bg-green-500 inline-block my-2 text-white">Toggle text</button>
+            class="rounded-lg px-4 py-2 font-ubuntu font-medium text-sm bg-green-500 inline-block my-2 text-white">Toggle
+            text
+            <span><i class="fa-brands fa-facebook fa-2x"></i></span>
+        </button>
 
         <div class="">
             @livewire('counter')
