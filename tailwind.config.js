@@ -7,7 +7,15 @@ module.exports = {
     "./node_modules/flowbite/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        roboto: ["'Roboto Slab', serif'"],
+        ubuntu: ["'Ubuntu', sans-serif'"]
+      },
+      colors: {
+        primary: "#dc0956",
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/forms'),
