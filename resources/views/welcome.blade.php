@@ -23,7 +23,8 @@
         <p class="p-3 bg-blue-600 text-white rounded-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
             corporis
             modi sequi et quisquam beatae libero
-            natus neque accusamus, rerum ipsa expedita deleniti mollitia deserunt ut dolorem alias tenetur? Iure?</p>
+        <div class="text-xxl">{{ done() }}</div>
+        natus neque accusamus, rerum ipsa expedita deleniti mollitia deserunt ut dolorem alias tenetur? Iure?</p>
     </body>
 
 </html>
