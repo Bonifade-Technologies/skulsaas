@@ -15,7 +15,6 @@ trait BelongsToTerm
  {
   return $this->hasMany(Term::class);
  }
-
 }
 
 
