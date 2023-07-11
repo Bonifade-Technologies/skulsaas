@@ -7,6 +7,7 @@
     <div class="items-center justify-between block sm:flex md:divide-x md:divide-gray-100 dark:divide-gray-700">
         <div class="flex items-center mb-4 sm:mb-0">
             <x-search />
+            @if(count($checked))
             <div class="flex items-center w-full sm:justify-end">
                 <div class="flex pl-2 space-x-1">
                     <a href="#"
@@ -43,7 +44,8 @@
                     </a>
                 </div>
             </div>
+            @endif
         </div>
-        <x-add name="Term" />
+        <x-add title="Term" />
     </div>
 </div>

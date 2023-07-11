@@ -6,15 +6,15 @@ use Illuminate\View\Component;
 
 class Add extends Component
 {
-    public $name;
+    public $title;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($name)
+    public function __construct($title)
     {
-        $this->name = $name;
+        $this->title = $title;
     }
 
     /**
