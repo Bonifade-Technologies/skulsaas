@@ -48,4 +48,7 @@
         </div>
         <x-add title="Term" />
     </div>
+
+    {{-- form --}}
+    <x-form.center title="Term" :update="$update" class="gap-6" />
 </div>

@@ -9,6 +9,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite(['resources/css/app.css','resources/scss/main.scss', 'resources/js/app.js', 'resources/js/template.js'])
     <title>Document</title>
+    @livewireStyles
+    <style>
+      [x-cloak] {
+        display: none;
+      }
+    </style>
   </head>
 
   <body>
@@ -661,11 +667,11 @@
         </div>
       </aside>
 
-      <div class="fixed inset-0 z-10 hidden  dark:bg-gray-900/90" id="sidebarBackdrop"></div>
+      {{-- <div class="fixed inset-0 z-10 hidden  dark:bg-gray-900/90" id="sidebarBackdrop"></div> --}}
 
       <div id="main-content" class="relative w-full h-full overflow-y-auto lg:ml-64  bg-white">
-        <main>
-          <div class="px-4 pt-6">
+        <main class="pt-6">
+          <div class="px-4">
             @yield('content')
             {{ $slot ?? '' }}
           </div>
@@ -679,7 +685,7 @@
         </footer>
       </div>
     </div>
-
+    @livewireScripts
 
     {{-- Fdas --}}
     {{-- <script src="https://flowbite-admin-dashboard.vercel.app//app.bundle.js"></script> --}}
