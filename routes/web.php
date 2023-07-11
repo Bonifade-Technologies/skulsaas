@@ -24,6 +24,6 @@ Route::get('/home', function () {
     return view('layouts.app');
 })->middleware('auth');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['prefix' => 'academics', 'middleware' => 'auth'], function () {
     Route::get('/terms', \App\Http\Livewire\Terms::class)->name('academics.terms');
 });

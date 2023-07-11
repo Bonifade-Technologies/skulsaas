@@ -7,14 +7,9 @@ function currentUser()
  return auth()->user();
 }
 
-function done()
+function currentTerm(): object|null
 {
- return "I am working";
-}
-
-function currentSession(): object|null
-{
- $years = \App\Models\Year::get();
- return $years->count() ? \App\Models\Year::latest()->first() : null;
+ $terms = \App\Models\Term::get();
+ return $terms->count() ? \App\Models\Term::with(['year'])->latest()->first() : null;
 }
 ?>

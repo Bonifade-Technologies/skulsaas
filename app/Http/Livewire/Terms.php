@@ -9,6 +9,19 @@ use Livewire\Component;
 class Terms extends Component
 {
     public $name, $start, $end, $dso, $cid, $year_id;
+    public $update = false;
+    public $form = false;
+
+    public ?array $checked = [];
+    public $perPage = 25;
+    public $sortField = 'id';
+    public $sortAsc = true;
+    public $search = '';
+
+    function showForm()
+    {
+        $this->form = true;
+    }
 
     function addSession()
     {
