@@ -9,6 +9,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite(['resources/css/app.css','resources/scss/main.scss', 'resources/js/app.js', 'resources/js/template.js'])
     <title>Document</title>
+    @livewireStyles
+    <style>
+      [x-cloak] {
+        display: none;
+      }
+    </style>
   </head>
 
   <body>
@@ -17,7 +23,7 @@
         <div class="flex items-center justify-between">
           <div class="flex items-center justify-start">
             <button id="toggleSidebarMobile" aria-expanded="true" aria-controls="sidebar"
-              class="p-2 text-gray-600 rounded cursor-pointer lg:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+              class="p-2 text-gray-600 rounded cursor-pointer lg:hidden hover:text-gray-900 hover:bg-primary focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
               <svg id="toggleSidebarMobileHamburger" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
@@ -55,7 +61,7 @@
           </div>
           <div class="flex items-center">
             <button id="toggleSidebarMobileSearch" type="button"
-              class="p-2 text-gray-500 rounded-lg lg:hidden hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+              class="p-2 text-gray-500 rounded-lg lg:hidden hover:text-gray-900 hover:bg-primary dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
               <span class="sr-only">Search</span>
 
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -66,7 +72,7 @@
             </button>
 
             <button type="button" data-dropdown-toggle="notification-dropdown"
-              class="p-2 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700">
+              class="p-2 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-primary dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700">
               <span class="sr-only">View notifications</span>
 
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -85,7 +91,7 @@
               </div>
               <div>
                 <a href="#"
-                  class="flex px-4 py-3 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
+                  class="flex px-4 py-3 border-b hover:bg-primary dark:hover:bg-gray-600 dark:border-gray-600">
                   <div class="flex-shrink-0">
                     <img class="rounded-full w-11 h-11"
                       src="https://flowbite-admin-dashboard.vercel.app/images/users/bonnie-green.png"
@@ -115,7 +121,7 @@
                   </div>
                 </a>
                 <a href="#"
-                  class="flex px-4 py-3 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
+                  class="flex px-4 py-3 border-b hover:bg-primary dark:hover:bg-gray-600 dark:border-gray-600">
                   <div class="flex-shrink-0">
                     <img class="rounded-full w-11 h-11"
                       src="https://flowbite-admin-dashboard.vercel.app/images/users/jese-leos.png" alt="Jese image" />
@@ -142,7 +148,7 @@
                   </div>
                 </a>
                 <a href="#"
-                  class="flex px-4 py-3 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
+                  class="flex px-4 py-3 border-b hover:bg-primary dark:hover:bg-gray-600 dark:border-gray-600">
                   <div class="flex-shrink-0">
                     <img class="rounded-full w-11 h-11"
                       src="https://flowbite-admin-dashboard.vercel.app/images/users/joseph-mcfall.png"
@@ -170,7 +176,7 @@
                   </div>
                 </a>
                 <a href="#"
-                  class="flex px-4 py-3 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
+                  class="flex px-4 py-3 border-b hover:bg-primary dark:hover:bg-gray-600 dark:border-gray-600">
                   <div class="flex-shrink-0">
                     <img class="rounded-full w-11 h-11"
                       src="https://flowbite-admin-dashboard.vercel.app/images/users/leslie-livingston.png"
@@ -197,7 +203,7 @@
                     </div>
                   </div>
                 </a>
-                <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
+                <a href="#" class="flex px-4 py-3 hover:bg-primary dark:hover:bg-gray-600">
                   <div class="flex-shrink-0">
                     <img class="rounded-full w-11 h-11"
                       src="https://flowbite-admin-dashboard.vercel.app/images/users/robert-brown.png"
@@ -225,7 +231,7 @@
                 </a>
               </div>
               <a href="#"
-                class="block py-2 text-base font-normal text-center text-gray-900 bg-gray-50 hover:bg-gray-100 dark:bg-gray-700 dark:text-white dark:hover:underline">
+                class="block py-2 text-base font-normal text-center text-gray-900 bg-gray-50 hover:bg-primary dark:bg-gray-700 dark:text-white dark:hover:underline">
                 <div class="inline-flex items-center">
                   <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
@@ -239,7 +245,7 @@
             </div>
 
             <button type="button" data-dropdown-toggle="apps-dropdown"
-              class="hidden p-2 text-gray-500 rounded-lg sm:flex hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700">
+              class="hidden p-2 text-gray-500 rounded-lg sm:flex hover:text-gray-900 hover:bg-primary dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700">
               <span class="sr-only">View notifications</span>
 
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -257,7 +263,7 @@
                 Apps
               </div>
               <div class="grid grid-cols-3 gap-4 p-4">
-                <a href="#" class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
+                <a href="#" class="block p-4 text-center rounded-lg hover:bg-primary dark:hover:bg-gray-600">
                   <svg class="mx-auto mb-1 text-gray-500 w-7 h-7 dark:text-gray-400" fill="currentColor"
                     viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
@@ -268,7 +274,7 @@
                     Sales
                   </div>
                 </a>
-                <a href="#" class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
+                <a href="#" class="block p-4 text-center rounded-lg hover:bg-primary dark:hover:bg-gray-600">
                   <svg class="mx-auto mb-1 text-gray-500 w-7 h-7 dark:text-gray-400" fill="currentColor"
                     viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -279,7 +285,7 @@
                     Users
                   </div>
                 </a>
-                <a href="#" class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
+                <a href="#" class="block p-4 text-center rounded-lg hover:bg-primary dark:hover:bg-gray-600">
                   <svg class="mx-auto mb-1 text-gray-500 w-7 h-7 dark:text-gray-400" fill="currentColor"
                     viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
@@ -290,7 +296,7 @@
                     Inbox
                   </div>
                 </a>
-                <a href="#" class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
+                <a href="#" class="block p-4 text-center rounded-lg hover:bg-primary dark:hover:bg-gray-600">
                   <svg class="mx-auto mb-1 text-gray-500 w-7 h-7 dark:text-gray-400" fill="currentColor"
                     viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
@@ -301,7 +307,7 @@
                     Profile
                   </div>
                 </a>
-                <a href="#" class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
+                <a href="#" class="block p-4 text-center rounded-lg hover:bg-primary dark:hover:bg-gray-600">
                   <svg class="mx-auto mb-1 text-gray-500 w-7 h-7 dark:text-gray-400" fill="currentColor"
                     viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
@@ -312,7 +318,7 @@
                     Settings
                   </div>
                 </a>
-                <a href="#" class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
+                <a href="#" class="block p-4 text-center rounded-lg hover:bg-primary dark:hover:bg-gray-600">
                   <svg class="mx-auto mb-1 text-gray-500 w-7 h-7 dark:text-gray-400" fill="currentColor"
                     viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"></path>
@@ -324,7 +330,7 @@
                     Products
                   </div>
                 </a>
-                <a href="#" class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
+                <a href="#" class="block p-4 text-center rounded-lg hover:bg-primary dark:hover:bg-gray-600">
                   <svg class="mx-auto mb-1 text-gray-500 w-7 h-7 dark:text-gray-400" fill="currentColor"
                     viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -338,7 +344,7 @@
                     Pricing
                   </div>
                 </a>
-                <a href="#" class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
+                <a href="#" class="block p-4 text-center rounded-lg hover:bg-primary dark:hover:bg-gray-600">
                   <svg class="mx-auto mb-1 text-gray-500 w-7 h-7 dark:text-gray-400" fill="currentColor"
                     viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
@@ -349,7 +355,7 @@
                     Billing
                   </div>
                 </a>
-                <a href="#" class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
+                <a href="#" class="block p-4 text-center rounded-lg hover:bg-primary dark:hover:bg-gray-600">
                   <svg class="mx-auto mb-1 text-gray-500 w-7 h-7 dark:text-gray-400" fill="none" stroke="currentColor"
                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -363,7 +369,7 @@
               </div>
             </div>
             <button id="theme-toggle" data-tooltip-target="tooltip-toggle" type="button"
-              class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+              class="text-gray-500 dark:text-gray-400 hover:bg-primary dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
               <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg">
                 <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
@@ -406,23 +412,23 @@
                 <ul class="py-1" role="none">
                   <li>
                     <a href="#"
-                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                       role="menuitem">Dashboard</a>
                   </li>
                   <li>
                     <a href="#"
-                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                       role="menuitem">Settings</a>
                   </li>
                   <li>
                     <a href="#"
-                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                       role="menuitem">Earnings</a>
                   </li>
                   <li>
                     <a href="route('logout')"
                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                       role="menuitem">Sign out</a>
                   </li>
                   <form class="hidden logout-form" id="logout-form" action="{{ route('logout') }}" method="POST">
@@ -463,8 +469,8 @@
                   </form>
                 </li>
                 <li>
-                  <a href="/index.html"
-                    class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
+                  <a href="/"
+                    class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-primary group dark:text-gray-200 dark:hover:bg-gray-700">
                     <svg
                       class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                       fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -475,9 +481,16 @@
                   </a>
                 </li>
 
+                <li class="rounded-lg shadow-sm">
+                  <a href="{{ route('academics.terms') }}"
+                    class="flex items-center p-2 text-base {{ request()->is('academics/terms') ? 'bg-primary text-white font-medium':'' }} rounded-lg hover:bg-primary group">
+                    <i class="fa-regular text-[20px] fa-school-circle-check"></i>
+                    <span class="ml-3" sidebar-toggle-item>Session</span>
+                  </a>
+                </li>
                 <li>
                   <a href="/settings/index.html"
-                    class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
+                    class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-primary group dark:text-gray-200 dark:hover:bg-gray-700">
                     <svg
                       class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                       fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -492,7 +505,7 @@
               </ul>
               <div class="pt-2 space-y-2">
                 <a href="https://github.com/themesberg/flowbite-admin-dashboard/issues" target="_blank"
-                  class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
+                  class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg hover:bg-primary group dark:text-gray-200 dark:hover:bg-gray-700">
                   <svg
                     class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -509,7 +522,7 @@
             class="absolute bottom-0 left-0 justify-center hidden w-full p-4 space-x-4 bg-white lg:flex dark:bg-gray-800"
             sidebar-bottom-menu>
             <a href="#" data-tooltip-target="documentation"
-              class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+              class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-primary dark:hover:bg-gray-700 dark:hover:text-white">
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z">
@@ -522,7 +535,7 @@
               <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
             <a href="/settings/index.html" data-tooltip-target="tooltip-settings"
-              class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+              class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-primary dark:hover:bg-gray-700 dark:hover:text-white">
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
                   d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
@@ -535,7 +548,7 @@
               <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
             <button type="button" data-dropdown-toggle="language-dropdown"
-              class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+              class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-primary dark:hover:bg-gray-700 dark:hover:text-white">
               <svg class="h-5 w-5 rounded-full mt-0.5" xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 3900 3900">
                 <path fill="#b22234" d="M0 0h7410v3900H0z" />
@@ -570,7 +583,7 @@
               <ul class="py-1" role="none">
                 <li>
                   <a href="#"
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                     role="menuitem">
                     <div class="inline-flex items-center">
                       <svg class="h-3.5 w-3.5 rounded-full mr-2" xmlns="http://www.w3.org/2000/svg"
@@ -596,7 +609,7 @@
                 </li>
                 <li>
                   <a href="#"
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                     role="menuitem">
                     <div class="inline-flex items-center">
                       <svg class="h-3.5 w-3.5 rounded-full mr-2" xmlns="http://www.w3.org/2000/svg"
@@ -611,7 +624,7 @@
                 </li>
                 <li>
                   <a href="#"
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                     role="menuitem">
                     <div class="inline-flex items-center">
                       <svg class="h-3.5 w-3.5 rounded-full mr-2" xmlns="http://www.w3.org/2000/svg"
@@ -628,7 +641,7 @@
                 </li>
                 <li>
                   <a href="#"
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                     role="menuitem">
                     <div class="inline-flex items-center">
                       <svg class="h-3.5 w-3.5 rounded-full mr-2" xmlns="http://www.w3.org/2000/svg"
@@ -654,11 +667,11 @@
         </div>
       </aside>
 
-      <div class="fixed inset-0 z-10 hidden bg-gray-900/50 dark:bg-gray-900/90" id="sidebarBackdrop"></div>
+      {{-- <div class="fixed inset-0 z-10 hidden  dark:bg-gray-900/90" id="sidebarBackdrop"></div> --}}
 
-      <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
-        <main>
-          <div class="px-4 pt-6">
+      <div id="main-content" class="relative w-full h-full overflow-y-auto lg:ml-64  bg-white">
+        <main class="pt-6">
+          <div class="px-4">
             @yield('content')
             {{ $slot ?? '' }}
           </div>
@@ -672,7 +685,12 @@
         </footer>
       </div>
     </div>
+    @livewireScripts
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <x-livewire-alert::scripts />
+    <script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script>
+    <x-livewire-alert::flash />
 
     {{-- Fdas --}}
     {{-- <script src="https://flowbite-admin-dashboard.vercel.app//app.bundle.js"></script> --}}
