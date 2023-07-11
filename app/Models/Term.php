@@ -10,6 +10,8 @@ class Term extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     function year(): BelongsTo
     {
         return $this->belongsTo(Year::class);

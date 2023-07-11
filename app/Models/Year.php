@@ -9,4 +9,5 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Year extends Model
 {
     use HasFactory, BelongsToTerm;
+    protected $guarded = [];
 }

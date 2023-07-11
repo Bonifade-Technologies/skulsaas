@@ -5,9 +5,11 @@ namespace App\Http\Livewire;
 use App\Models\Term;
 use App\Models\Year;
 use Livewire\Component;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Terms extends Component
 {
+    use LivewireAlert;
     public $name, $start, $end, $dso, $cid, $year_id;
     public $update = false;
     public $form = false;
@@ -25,7 +27,6 @@ class Terms extends Component
 
     function addSession()
     {
-
         $data = $this->validate([
             'name' => 'required|unique:years',
             'start' => 'required|date',
@@ -35,6 +36,7 @@ class Terms extends Component
         $saved = Year::create($data);
         if ($saved) {
             $this->reset();
+            $this->alert('success', 'Session created successfully');
         }
     }
 
