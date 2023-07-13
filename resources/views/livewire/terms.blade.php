@@ -198,10 +198,12 @@ $allSessions = \App\Models\Year::get();
                             </td>
 
                             <td class="p-2 space-x-2 flex items-center whitespace-nowrap">
-                                <button class="h-7 w-7 border-blue-600 border rounded-md text-blue-600">
+                                <button data-tooltip-target="edit" data-tooltip-placement="left"
+                                    class="h-7 w-7 border-blue-600 border rounded-md text-blue-600">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
-                                <button class="h-7 w-7 border-red-600 border rounded-md text-red-600">
+                                <button data-tooltip-target="delete" data-tooltip-placement="left"
+                                    class="h-7 w-7 border-red-600 border rounded-md text-red-600">
                                     <i class="fa-regular fa-trash"></i>
                                 </button>
                                 {{-- <button type="button" id="updateProductButton"
@@ -221,6 +223,12 @@ $allSessions = \App\Models\Year::get();
                                     Update
                                 </button> --}}
                             </td>
+                            {{-- edit tooltip --}}
+                            <x-tooltip pers="edit" content="Edit Term" />
+
+                            {{-- edit tooltip --}}
+                            <x-tooltip pers="delete" content="Delete Term" />
+
                         </tr>
                         @empty
 

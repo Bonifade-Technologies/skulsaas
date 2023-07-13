@@ -1,1 +1,1 @@
-<span class="rounded-full px-2 py-[2px] text-sm bg-white text-{{ $color }}-500">{{ $name }}</span>
+<span class="rounded-full px-2 py-[2px] text-sm bg-white shadow-sm text-{{ $color }}-500">{{ $name }}</span>

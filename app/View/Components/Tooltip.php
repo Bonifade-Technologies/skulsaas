@@ -6,14 +6,16 @@ use Illuminate\View\Component;
 
 class Tooltip extends Component
 {
+    public $pers, $content;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($pers, $content)
     {
-        //
+        $this->pers = $pers;
+        $this->content = $content;
     }
 
     /**
