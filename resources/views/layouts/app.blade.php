@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite(['resources/css/app.css','resources/scss/main.scss', 'resources/js/app.js', 'resources/js/template.js'])
+    @vite(['resources/css/app.css','resources/scss/main.scss', 'resources/js/template.js', 'resources/js/app.js'])
     <title>Document</title>
     @livewireStyles
     <style>
@@ -38,7 +38,7 @@
               </svg>
             </button>
             <a href="/index.html" class="flex ml-2 md:mr-24">
-              <img src="{{ asset('img/logo.jpg') }}" class="h-8 mr-3" alt="FlowBite Logo" />
+              <img src="{{ asset('img/logo.jpg') }}" class="h-6 mr-3" alt="FlowBite Logo" />
               <span
                 class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">{{ config('app.name') }}</span>
             </a>
@@ -667,7 +667,7 @@
         </div>
       </aside>
 
-      {{-- <div class="fixed inset-0 z-10 hidden  dark:bg-gray-900/90" id="sidebarBackdrop"></div> --}}
+      <div class="fixed inset-0 z-10 hidden  dark:bg-gray-900/90" id="sidebarBackdrop"></div>
 
       <div id="main-content" class="relative w-full h-full overflow-y-auto lg:ml-64  bg-white">
         <main class="pt-6">

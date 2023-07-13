@@ -16,4 +16,14 @@ class Term extends Model
     {
         return $this->belongsTo(Year::class);
     }
+
+    static function boot()
+    {
+        parent::boot();
+
+        self::created(function ($model) {
+            Term::query()->update(['is_current' => false]);
+            $model->is_current = true;
+        });
+    }
 }

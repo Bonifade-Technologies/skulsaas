@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->string('name')->unique();
             $table->date('start')->nullable();
             $table->date('end')->nullable();
+            $table->boolean('is_current')->default(true);
             $table->timestamps();
         });
     }

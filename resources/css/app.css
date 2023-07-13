@@ -8,7 +8,9 @@
     body {
         @apply font-normal;
     }
-
+    .z-60 {
+        z-index: 60;
+    }
     .active {
         @apply bg-primary;
     }

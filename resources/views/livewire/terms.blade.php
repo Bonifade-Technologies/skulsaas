@@ -1,21 +1,25 @@
 <div class="grid grid-cols-1 space-y-4">
     <div class="space-y-4">
         <x-bread-crumb :inp="array('name'=> 'Terms', 'url'=> 'academics/terms')" />
-        <x-title title="Session & Term" />
+        <div class="flex items-center space-x-4">
+            <x-title title="Session & Term" />
+            <x-add title="Session" />
+        </div>
     </div>
 
     <div class="items-center justify-between block sm:flex md:divide-x md:divide-gray-100 dark:divide-gray-700">
         <div class="flex items-center mb-4 sm:mb-0">
             {{-- <x-search /> --}}
-            <form wire:submit.prevent="addSession" class="flex gap-2 items-end flex-col md:flex-row">
-                <x-input.text label="name" name="name" />
+            <div wire:submit.prevent="addSession" class="flex gap-2 items-end flex-col md:flex-row">
+                {{-- <x-input.text label="name" name="name" />
                 <x-input.text label="Start Date" name="start" type="date" />
-                <x-input.text label="End Date" name="end" type="date" />
-                <button
+                <x-input.text label="End Date" name="end" type="date" /> --}}
+                {{-- <button
                     class="text-white bg-primary hover:bg-primary-800 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-600 min-w-max dark:hover:bg-primary focus:outline-none">
-                    Create Session
-                </button>
-            </form>
+                    Add Session
+                </button> --}}
+
+            </div>
             @if(count($checked))
             <div class="flex items-center w-full sm:justify-end">
                 <div class="flex pl-2 space-x-1">
@@ -55,9 +59,17 @@
             </div>
             @endif
         </div>
-        {{-- <x-add title="Term" /> --}}
     </div>
 
-    {{-- form --}}
-    <x-form.center title="Term" :update="$update" class="gap-6" />
+    <div class="w-full">
+
+    </div>
+
 </div>
+{{-- form --}}
+{{-- <x-form.center title="Term" :update="$update" class="gap-6" /> --}}
+<x-form.right title="Session" :update="$update" class="gap-6">
+    <x-input.text label="name" name="name" />
+    <x-input.text label="Start Date" name="start" type="date" />
+    <x-input.text label="End Date" name="end" type="date" />
+</x-form.right>
