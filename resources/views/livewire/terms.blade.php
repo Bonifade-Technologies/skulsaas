@@ -1,3 +1,6 @@
+@php
+$allSessions = \App\Models\Year::get();
+@endphp
 <div class="w-full">
     <div class="grid grid-cols-1 space-y-4">
         <div class="space-y-4">
@@ -101,16 +104,24 @@
                 <x-search />
             </div>
             <ul class="flex flex-col p-2 space-y-2 divide-gray-300 text-sm overflow-y-auto">
+                @if ($allSessions->count())
                 @forelse ($years as $year)
-                <li class="px-3 py-2 border rounded">
+                <li class="px-3 py-2 border rounded tt hover:bg-primary hover:text-white">
                     <span>{{ $year->name }}</span>
                     <span>{{ $year->is_current }}</span>
                 </li>
                 @empty
-                <li>No sessions yet, kindly add one</li>
+                <li>No result found for search term</li>
                 @endforelse
+                @else
+                <li>No session yet kindly add one</li>
+                @endif
             </ul>
-
+            @if ($allSessions->count() > $perPage)
+            <div class="p-2 border-t">
+                {{ $years->links() }}
+            </div>
+            @endif
         </div>
         <div class="flex-1">
 
