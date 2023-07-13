@@ -181,7 +181,7 @@ $allSessions = \App\Models\Year::get();
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                         @forelse ($currentSessionTerms as $term)
-                        <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <tr class="even:bg-gray-50 dark:hover:bg-gray-700">
                             <td
                                 class="px-4 py-2 space-x-2 capitalize text-base text-gray-900 whitespace-nowrap dark:text-white">
                                 <span>{{ $loop->iteration."." }}</span>
@@ -197,7 +197,13 @@ $allSessions = \App\Models\Year::get();
                                 {{ $term->dso }}
                             </td>
 
-                            <td class="p-2 space-x-2 whitespace-nowrap">
+                            <td class="p-2 space-x-2 flex items-center whitespace-nowrap">
+                                <button class="h-7 w-7 border-blue-600 border rounded-md text-blue-600">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <button class="h-7 w-7 border-red-600 border rounded-md text-red-600">
+                                    <i class="fa-regular fa-trash"></i>
+                                </button>
                                 {{-- <button type="button" id="updateProductButton"
                                     data-drawer-target="drawer-update-product-default"
                                     data-drawer-show="drawer-update-product-default"

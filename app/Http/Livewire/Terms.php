@@ -37,6 +37,7 @@ class Terms extends Component
         $saved = Year::create($data);
         if ($saved) {
             $this->reset();
+            $this->setYear($saved);
             $this->alert('success', 'Session created successfully');
         }
     }
