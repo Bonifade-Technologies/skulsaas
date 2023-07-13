@@ -15,7 +15,7 @@ class Year extends Model
     {
         parent::boot();
 
-        self::created(function ($model) {
+        self::creating(function ($model) {
             Year::query()->update(['is_current' => false]);
             $model->is_current = true;
         });

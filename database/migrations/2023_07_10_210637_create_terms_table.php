@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->date('start');
             $table->date('end');
             $table->integer('dso')->nullable();
-            $table->boolean('is_current')->default(true);
+            $table->boolean('is_current')->default(false);
             $table->timestamps();
         });
     }

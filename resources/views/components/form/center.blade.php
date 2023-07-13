@@ -1,5 +1,5 @@
 <div x-cloak
-    class="fixed z-60 bg-black bg-opacity-50 items-center justify-center overflow-x-hidden flex inset-0 h-screen"
+    class="fixed z-0 bg-black bg-opacity-50 items-center justify-center overflow-x-hidden flex inset-0 h-screen"
     x-data="{ form: @entangle('form').defer }" x-show="form">
     <div @click.away="form = false" class="relative w-full h-full max-w-lg px-4 md:h-auto overflow-y-auto">
         <!-- Modal content -->

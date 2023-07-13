@@ -28,7 +28,7 @@ class Terms extends Component
     function addSession()
     {
         $data = $this->validate([
-            'name' => 'required|unique:years',
+            'name' => ['required', 'unique:years'],
             'start' => 'required|date',
             'end' => 'required|date|after:start',
         ]);
@@ -61,6 +61,8 @@ class Terms extends Component
     }
     public function render()
     {
-        return view('livewire.terms');
+        $term = "%$this->search%";
+        $years = Year::where('name', 'LIKE', $term)->get();
+        return view('livewire.terms', compact(['years']));
     }
 }
