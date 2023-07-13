@@ -22,7 +22,8 @@ class TermSeeder extends Seeder
                 Term::create([
                     'year_id' => $yr[$i],
                     'name' => $terms[$j],
-                    'start' => now()->subMonths(4),
+                    'dso' => random_int(100, 180),
+                    'start' => now()->subMonths(random_int(2, 8)),
                     'end' => now()->addYear()->subMonths(random_int(1, 4))
                 ]);
             }

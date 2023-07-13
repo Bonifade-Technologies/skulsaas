@@ -106,9 +106,13 @@ $allSessions = \App\Models\Year::get();
             <ul class="flex flex-col p-2 space-y-2 divide-gray-300 text-sm overflow-y-auto">
                 @if ($allSessions->count())
                 @forelse ($years as $year)
-                <li class="px-3 py-2 border rounded tt hover:bg-primary hover:text-white">
+                <li wire:click="setYear({{ $year->id }})" @class([ 'px-3 py-2 border cursor-pointer flex justify-between items-center rounded tt hover:bg-primary
+                    hover:text-white' ,'bg-primary text-white font-medium'=> $year_id == $year->id])
+                    >
                     <span>{{ $year->name }}</span>
-                    <span>{{ $year->is_current }}</span>
+                    @if ($year->is_current)
+                    <x-badge color="green" name="current" />
+                    @endif
                 </li>
                 @empty
                 <li>No result found for search term</li>
@@ -124,7 +128,109 @@ $allSessions = \App\Models\Year::get();
             @endif
         </div>
         <div class="flex-1">
+            @if ($allSessions->count())
+            <form wire:submit.prevent=@if ($update) 'updateTerm' @else 'addTerm' @endif class="w-full p-2 border-b">
+                <table class="w-full ">
+                    <tr>
+                        <td class="border p-2">
+                            <x-input.text label="name" name="name" class="py-1 rounded" />
+                        </td>
+                        <td class="border p-2">
+                            <x-input.text label="Start Date" name="start" type="date" class="py-1 rounded" />
+                        </td>
+                        <td class="border p-2">
+                            <x-input.text label="End Date" name="end" type="date" class="py-1 rounded" />
+                        </td>
+                        <td class="border p-2">
+                            <x-input.text label="Days" name="dso" class="py-1 rounded" />
+                        </td>
+                        <td>
+                            <button wire:loading.attr="disabled"
+                                class="text-white disabled:bg-gray-700 capitalize disabled:text-gray-500 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                type="submit">{{ $update ? 'Update' : 'Add' }} Term</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
 
+            <div class="w-full overflow-x-auto p-2">
+                <table class="w-full divide-y border divide-gray-200 table-fixed dark:divide-gray-600 overflow-x-auto">
+                    <thead class="bg-gray-100 dark:bg-gray-700">
+                        <tr>
+                            <th scope="col"
+                                class="p-4 pl-10 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                Term
+                            </th>
+                            <th scope="col"
+                                class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                Start Date
+                            </th>
+                            <th scope="col"
+                                class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                Date End
+                            </th>
+                            <th scope="col"
+                                class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                Days
+                            </th>
+                            <th scope="col"
+                                class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                        @forelse ($currentSessionTerms as $term)
+                        <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <td
+                                class="px-4 py-2 space-x-2 capitalize text-base text-gray-900 whitespace-nowrap dark:text-white">
+                                <span>{{ $loop->iteration."." }}</span>
+                                <span> {{ $term->name }}</span>
+                            </td>
+                            <td class="px-4 text-sm py-2 text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ $term->start->format('d M, Y') }}
+                            </td>
+                            <td class="px-4 text-sm py-2 text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ $term->end->format('d M, Y') }}
+                            </td>
+                            <td class="px-4 py-2 text-base text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ $term->dso }}
+                            </td>
+
+                            <td class="p-2 space-x-2 whitespace-nowrap">
+                                {{-- <button type="button" id="updateProductButton"
+                                    data-drawer-target="drawer-update-product-default"
+                                    data-drawer-show="drawer-update-product-default"
+                                    aria-controls="drawer-update-product-default" data-drawer-placement="right"
+                                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z">
+                                        </path>
+                                        <path fill-rule="evenodd"
+                                            d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    Update
+                                </button> --}}
+                            </td>
+                        </tr>
+                        @empty
+
+                        @endforelse
+
+                    </tbody>
+                </table>
+            </div>
+            @else
+            <div class="align-middle flex justify-center items-center py-auto h-full text-center">No term
+                yet, first create a session, then
+                you
+                can be able to
+                create term as
+                well</div>
+            @endif
         </div>
     </div>
 

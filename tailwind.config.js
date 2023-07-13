@@ -13,7 +13,9 @@ module.exports = {
         ubuntu: ["'Ubuntu', sans-serif'"]
       },
       colors: {
-        primary: "#dc0956",
+        primary: {
+          DEFAULT: "#dc0956",
+        },
       },
     },
   },
