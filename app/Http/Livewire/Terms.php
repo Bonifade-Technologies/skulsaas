@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Term;
 use App\Models\Year;
+use App\Rules\SessionRule;
 use Livewire\Component;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithPagination;
@@ -37,7 +38,7 @@ class Terms extends Component
     function addSession()
     {
         $data = $this->validate([
-            'name' => ['required', 'unique:years'],
+            'name' => ['required', 'unique:years,name', new SessionRule],
             'start' => 'required|date',
             'end' => 'required|date|after:start',
         ]);
