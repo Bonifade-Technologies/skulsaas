@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->date('end');
             $table->integer('dso')->nullable();
             $table->boolean('is_current')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

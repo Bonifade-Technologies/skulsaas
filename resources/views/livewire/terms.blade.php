@@ -106,8 +106,8 @@ $allSessions = \App\Models\Year::get();
             <ul class="flex flex-col p-2 space-y-2 divide-gray-300 text-sm overflow-y-auto max-h-[400px]">
                 @if ($allSessions->count())
                 @forelse ($years as $year)
-                <li wire:click="setYear({{ $year->id }})" @class([ 'px-3 py-2 border cursor-pointer flex justify-between items-center rounded tt hover:bg-primary
-                    hover:text-white' ,'bg-primary text-white font-medium'=> $year_id == $year->id])
+                <li wire:click="setYear({{ $year->id }})" @class([ 'px-3 py-2 border border-gray-300 bg-white cursor-pointer flex justify-between items-center rounded tt hover:bg-secondary
+                    hover:text-white' ,'bg-secondary text-white border-0 font-medium'=> $year_id == $year->id])
                     >
                     <span>{{ $year->name }}</span>
                     @if ($year->is_current)
@@ -147,7 +147,7 @@ $allSessions = \App\Models\Year::get();
                         </td>
                         <td class="border p-2 align-middle">
                             <button wire:loading.attr="disabled"
-                                class="text-white bg-primary disabled:bg-gray-700 whitespace-nowrap capitalize disabled:text-gray-500 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                class="text-white bg-primary disabled:bg-gray-700 whitespace-nowrap capitalize disabled:text-gray-500 hover:bg-primary-600 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                                 type="submit">{{ $update ? 'Update' : 'Add' }} Term</button>
                         </td>
                     </tr>

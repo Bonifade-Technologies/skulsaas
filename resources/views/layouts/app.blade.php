@@ -17,7 +17,7 @@
     </style>
   </head>
 
-  <body>
+  <body class="bg-background-50">
     <nav class="fixed z-30 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
       <div class="px-3 py-3 lg:px-5 lg:pl-3">
         <div class="flex items-center justify-between">
@@ -669,8 +669,8 @@
 
       <div class="fixed inset-0 z-10 hidden  dark:bg-gray-900/90" id="sidebarBackdrop"></div>
 
-      <div id="main-content" class="relative w-full h-full overflow-y-auto lg:ml-64  bg-white">
-        <main class="pt-6">
+      <div id="main-content" class="relative w-full h-full overflow-y-auto lg:ml-64 min-h-full  bg-background-50 ">
+        <main class="pt-6 min-h-full">
           <div class="px-4">
             @yield('content')
             {{ $slot ?? '' }}
