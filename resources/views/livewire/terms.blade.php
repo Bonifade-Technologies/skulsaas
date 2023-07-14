@@ -98,12 +98,12 @@ $allSessions = \App\Models\Year::get();
         </form>
     </x-form.right>
 
-    <div class="w-full border flex divide-x divide-gray-300">
-        <div class="w-full md:w-1/3 max-w-[250px] max-h-[500px]">
+    <div class="w-full border flex divide-x flex-col md:flex-row divide-gray-300 overflow-x-auto">
+        <div class="w-full md:w-1/3 md:max-w-[250px] max-h-[500px]">
             <div class="p-2 border-b">
                 <x-search />
             </div>
-            <ul class="flex flex-col p-2 space-y-2 divide-gray-300 text-sm overflow-y-auto">
+            <ul class="flex flex-col p-2 space-y-2 divide-gray-300 text-sm overflow-y-auto max-h-[400px]">
                 @if ($allSessions->count())
                 @forelse ($years as $year)
                 <li wire:click="setYear({{ $year->id }})" @class([ 'px-3 py-2 border cursor-pointer flex justify-between items-center rounded tt hover:bg-primary
@@ -127,13 +127,14 @@ $allSessions = \App\Models\Year::get();
             </div>
             @endif
         </div>
-        <div class="flex-1">
+        <div class="flex-1 overflow-x-auto">
             @if ($allSessions->count())
             <form wire:submit.prevent=@if ($update) 'updateTerm' @else 'addTerm' @endif class="w-full p-2 border-b">
-                <table class="w-full ">
-                    <tr>
-                        <td class="border p-2">
-                            <x-input.text label="name" name="name" class="py-1 rounded" />
+                <table class="w-full oveflow-x-auto">
+                    <tr class="flex flex-col md:flex-row lg:flex-none">
+                        <td class="border p-2 min-w-[120px]">
+                            <x-input.single-select :list="['first', 'second', 'third']" label="name" name="name"
+                                class="py-1 rounded" />
                         </td>
                         <td class="border p-2">
                             <x-input.text label="Start Date" name="start" type="date" class="py-1 rounded" />
@@ -144,9 +145,9 @@ $allSessions = \App\Models\Year::get();
                         <td class="border p-2">
                             <x-input.text label="Days" name="dso" class="py-1 rounded" />
                         </td>
-                        <td>
+                        <td class="border p-2 align-middle">
                             <button wire:loading.attr="disabled"
-                                class="text-white disabled:bg-gray-700 capitalize disabled:text-gray-500 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                class="text-white bg-primary disabled:bg-gray-700 whitespace-nowrap capitalize disabled:text-gray-500 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                                 type="submit">{{ $update ? 'Update' : 'Add' }} Term</button>
                         </td>
                     </tr>
@@ -154,7 +155,8 @@ $allSessions = \App\Models\Year::get();
             </form>
 
             <div class="w-full overflow-x-auto p-2">
-                <table class="w-full divide-y border divide-gray-200 table-fixed dark:divide-gray-600 overflow-x-auto">
+                <table
+                    class="w-full divide-y border min-w-[550px] divide-gray-200 table-fixed dark:divide-gray-600 overflow-x-auto">
                     <thead class="bg-gray-100 dark:bg-gray-700">
                         <tr>
                             <th scope="col"
@@ -198,13 +200,15 @@ $allSessions = \App\Models\Year::get();
                             </td>
 
                             <td class="p-2 space-x-2 flex items-center whitespace-nowrap">
-                                <button data-tooltip-target="edit" data-tooltip-placement="left"
+                                <button wire:click="editTerm({{ $term->id }})" data-tooltip-target="edit"
+                                    data-tooltip-placement="left"
                                     class="h-7 w-7 border-blue-600 border rounded-md text-blue-600">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
-                                <button data-tooltip-target="delete" data-tooltip-placement="left"
+                                <button wire:click="confirmDelete({{ $term->id }})" data-tooltip-target="delete"
+                                    data-tooltip-placement="left"
                                     class="h-7 w-7 border-red-600 border rounded-md text-red-600">
-                                    <i class="fa-regular fa-trash"></i>
+                                    <i class="fa-regular fa-trash-can"></i>
                                 </button>
                                 {{-- <button type="button" id="updateProductButton"
                                     data-drawer-target="drawer-update-product-default"
@@ -247,5 +251,6 @@ $allSessions = \App\Models\Year::get();
             @endif
         </div>
     </div>
-
+    <x-confirm-delete text="Are you sure you want to delete this,
+    this action is irreversible" />
 </div>

@@ -687,10 +687,60 @@
     </div>
     @livewireScripts
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <x-livewire-alert::scripts />
     <script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script>
     <x-livewire-alert::flash />
+    @stack('scripts')
+    <script>
+      // success message
+      window.addEventListener('swal:success', function(e) {
+        Swal.fire(e.detail);
+      });
+  
+      // confirm single deleted
+      window.addEventListener('swal:confirm', event => {
+        Swal.fire({
+          title: 'Are you sure?'
+          , text: "You won\'t be able to revert this!"
+          , icon: 'warning'
+          , showCancelButton: true
+          , cancelButtonColor: '#f11'
+          , confirmButtonColor: ''
+          confirmButtonText: 'Yes delete it'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Livewire.emit('deleteConfirm');
+            // Swal.fire(
+            //   'Deleted!'
+            //   , 'Your file has been deleted'
+            //   , 'success'
+            // )
+          }
+        });
+      });
+  
+      // confirm multiple delete
+      window.addEventListener('swal:multiple', event => {
+        Swal.fire({
+          title: 'Are you sure you?'
+          , text: "You are deleting buck records at once, you won\'t be able to revert this!"
+          , icon: 'warning'
+          , showCancelButton: true
+          , cancelButtonColor: '#f11'
+          , confirmButtonText: 'Go Ahead'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Livewire.emit('deleteMutipleConfirm');
+            // Swal.fire(
+            //   'Deleted!'
+            //   , 'Your file has been deleted'
+            //   , 'success'
+            // )
+          }
+        });
+      });
+  
+    </script>
 
     {{-- Fdas --}}
     {{-- <script src="https://flowbite-admin-dashboard.vercel.app//app.bundle.js"></script> --}}
