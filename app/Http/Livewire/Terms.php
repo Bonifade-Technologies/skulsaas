@@ -28,6 +28,11 @@ class Terms extends Component
         'deleteMutipleConfirm' => 'buckDelete'
     ];
 
+    protected $messages = [
+        'name.unique' => 'Session already existed',
+        'name.starts_with' => 'Session must start with real date and in this format e.g 2014/15, 2021/22 etc.',
+    ];
+
     function showForm()
     {
         $this->reset();
@@ -38,7 +43,7 @@ class Terms extends Component
     function addSession()
     {
         $data = $this->validate([
-            'name' => ['required', 'unique:years,name', new SessionRule],
+            'name' => ['required', 'unique:years,name', 'starts_with:20', new SessionRule],
             'start' => 'required|date',
             'end' => 'required|date|after:start',
         ]);
