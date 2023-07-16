@@ -17,6 +17,10 @@
     </style>
   </head>
 
+  @php
+  $currentTerm = currentTerm();
+  @endphp
+
   <body class="bg-background-50">
     <nav class="fixed z-30 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
       <div class="px-3 py-3 lg:px-5 lg:pl-3">
@@ -37,12 +41,12 @@
                   clip-rule="evenodd"></path>
               </svg>
             </button>
-            <a href="/index.html" class="flex ml-2 md:mr-24">
+            <a href="/" class="flex ml-2 md:mr-24">
               <img src="{{ asset('img/logo.jpg') }}" class="h-6 mr-3" alt="FlowBite Logo" />
               <span
                 class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">{{ config('app.name') }}</span>
             </a>
-            <form action="#" method="GET" class="hidden lg:block lg:pl-3.5">
+            {{-- <form action="#" method="GET" class="hidden lg:block lg:pl-3.5">
               <label for="topbar-search" class="sr-only">Search</label>
               <div class="relative mt-1 lg:w-96">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -57,7 +61,15 @@
                   class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder="Search" />
               </div>
-            </form>
+            </form> --}}
+            <div class=" bg-background-50 mx-auto w-full p-2 rounded text-sm shadow hidden lg:block lg:ml-12 uppercase">
+              @if ($currentTerm)
+              current term: <b class="text-green-500">{{ $currentTerm->name. " term " }}</b> of
+              <b class="text-green-500">{{ $currentTerm->year->session_name . " session"}}</b>
+              @else
+              <span>No term yet, kindly create session and term</span>
+              @endif
+            </div>
           </div>
           <div class="flex items-center">
             <button id="toggleSidebarMobileSearch" type="button"

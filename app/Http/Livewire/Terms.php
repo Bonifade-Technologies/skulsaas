@@ -114,15 +114,20 @@ class Terms extends Component
             'end' => 'required|date|after:start',
             'dso' => 'nullable|integer',
         ]);
-
-        $update = Term::find($this->cid)->update($data);
-        $yearId = $this->year_id;
-        if ($update) {
-            $this->reset();
-            $year = Year::find($yearId);
-            $this->setYear($year);
-            $this->alert('success', 'Term updated successfully');
+        $terms = Term::where('year_id', $this->year_id)->pluck('name')->toArray();
+        if (in_array($data['name'], $terms) && count($terms) < 3) {
+            $this->alert('warning', 'Duplicate Term, term already existed');
+        } else {
+            $update = Term::find($this->cid)->update($data);
+            $yearId = $this->year_id;
+            if ($update) {
+                $this->reset();
+                $year = Year::find($yearId);
+                $this->setYear($year);
+                $this->alert('success', 'Term updated successfully');
+            }
         }
+
     }
 
     function lastTerm()
