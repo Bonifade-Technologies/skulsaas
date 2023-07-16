@@ -11,6 +11,9 @@
     .z-60 {
         z-index: 60;
     }
+    a.active {
+        @apply bg-primary text-white font-medium shadow-sm;
+    }
     .active {
         @apply bg-primary;
     }

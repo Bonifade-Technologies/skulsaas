@@ -108,7 +108,7 @@ $allSessions = \App\Models\Year::get();
                 @forelse ($years as $year)
                 <li wire:click="setYear({{ $year->id }})"
                     @class([ 'px-3 relative py-2 tt border border-gray-300 bg-white cursor-pointer flex justify-between items-center rounded tt hover:bg-slate-200'
-                    ,'bg-slate-200 black shadow border-0 font-medium'=> $year_id == $year->id])
+                    ,'bg-background-200 black shadow border-0 font-medium'=> $year_id == $year->id])
                     >
                     <span>{{ $year->session_name }}</span>
                     @if ($year->is_current)

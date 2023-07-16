@@ -27,3 +27,7 @@ Route::get('/home', function () {
 Route::group(['prefix' => 'academics', 'middleware' => 'auth'], function () {
     Route::get('/terms', \App\Http\Livewire\Terms::class)->name('academics.terms');
 });
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::get('/settings', \App\Http\Livewire\Settings::class)->name('settings');
+});
