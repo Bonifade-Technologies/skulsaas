@@ -12,7 +12,7 @@ use Livewire\WithPagination;
 class Terms extends Component
 {
     use LivewireAlert, WithPagination;
-    public $name, $start, $end, $dso, $cid, $year_id, $terms, $activeSession;
+    public $name, $start, $end, $session_name, $session_start, $session_end, $dso, $cid, $year_id, $terms, $activeSession;
     public $update = false;
     public $form = false;
     public $confirm = false;
@@ -29,8 +29,9 @@ class Terms extends Component
     ];
 
     protected $messages = [
-        'name.unique' => 'Session already existed',
-        'name.starts_with' => 'Session must start with real date and in this format e.g 2014/15, 2021/22 etc.',
+        'session_name.unique' => 'Session already existed',
+        'session_name.size' => 'Session must be exact 7 characters in this format 2014/15, 2021/22 etc.',
+        'session_name.starts_with' => 'Session must start with real date and in this format e.g 2014/15, 2021/22 etc.',
     ];
 
     function showForm()
@@ -43,9 +44,9 @@ class Terms extends Component
     function addSession()
     {
         $data = $this->validate([
-            'name' => ['required', 'unique:years,name', 'starts_with:20', new SessionRule],
-            'start' => 'required|date',
-            'end' => 'required|date|after:start',
+            'session_name' => ['required', 'unique:years,name', 'starts_with:20', new SessionRule, 'size:7'],
+            'session_start' => 'required|date',
+            'session_end' => 'required|date|after:start',
         ]);
 
         $saved = Year::create($data);
@@ -139,6 +140,17 @@ class Terms extends Component
         }
 
     }
+    public function deleteSession(Year $year)
+    {
+        $del = $year->delete();
+        if ($del) {
+            $this->reset();
+            // $this->resetPage();
+            $this->alert('success', 'Session has been removed successfully');
+            return redirect()->back();
+        }
+
+    }
 
     public function delete()
     {
@@ -168,7 +180,7 @@ class Terms extends Component
     {
         $currentSessionTerms = $this->activeSession ? $this->activeSession->terms : [];
         $term = "%$this->search%";
-        $years = Year::where('name', 'LIKE', $term)->latest()->simplePaginate($this->perPage);
+        $years = Year::where('session_name', 'LIKE', $term)->latest()->simplePaginate($this->perPage);
         return view('livewire.terms', compact(['years', 'currentSessionTerms']));
     }
 }

@@ -16,14 +16,14 @@ class YearSeeder extends Seeder
     public function run()
     {
         Year::create([
-            'name' => '2022/23',
-            'start' => now()->subYear()->subMonths(4),
-            'end' => now()->subMonths(random_int(1, 4))
+            'session_name' => '2022/23',
+            'session_start' => now()->subYear()->subMonths(4),
+            'session_end' => now()->subMonths(random_int(1, 4))
         ]);
         Year::create([
-            'name' => '2023/24',
-            'start' => now()->subMonths(4),
-            'end' => now()->addYear()->subMonths(random_int(1, 4))
+            'session_name' => '2023/24',
+            'session_start' => now()->subMonths(4),
+            'session_end' => now()->addYear()->subMonths(random_int(1, 4))
         ]);
     }
 }

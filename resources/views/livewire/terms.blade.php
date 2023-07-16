@@ -74,9 +74,9 @@ $allSessions = \App\Models\Year::get();
     <x-form.right title="Session" :update="$update" class="gap-6">
         <form wire:submit.prevent="addSession">
             <div class="space-y-4">
-                <x-input.text label="name" name="name" />
-                <x-input.text label="Start Date" name="start" type="date" />
-                <x-input.text label="End Date" name="end" type="date" />
+                <x-input.text label="name" name="session_name" />
+                <x-input.text label="Start Date" name="session_start" type="date" />
+                <x-input.text label="End Date" name="session_end" type="date" />
 
                 <div class="bottom-0 left-0 flex justify-center w-full pb-4 space-x-4 md:px-4 md:absolute">
                     <button
@@ -106,13 +106,21 @@ $allSessions = \App\Models\Year::get();
             <ul class="flex flex-col p-2 space-y-2 divide-gray-300 text-sm overflow-y-auto max-h-[400px]">
                 @if ($allSessions->count())
                 @forelse ($years as $year)
-                <li wire:click="setYear({{ $year->id }})" @class([ 'px-3 py-2 border border-gray-300 bg-white cursor-pointer flex justify-between items-center rounded tt hover:bg-secondary
-                    hover:text-white' ,'bg-secondary text-white border-0 font-medium'=> $year_id == $year->id])
+                <li wire:click="setYear({{ $year->id }})"
+                    @class([ 'px-3 relative py-2 tt border border-gray-300 bg-white cursor-pointer flex justify-between items-center rounded tt hover:bg-slate-200'
+                    ,'bg-slate-200 black shadow border-0 font-medium'=> $year_id == $year->id])
                     >
-                    <span>{{ $year->name }}</span>
+                    <span>{{ $year->session_name }}</span>
                     @if ($year->is_current)
                     <x-badge color="green" name="current" />
+                    {{-- <span x-cloak x-show="del"
+                        class="absolute rounded -top-1 -left-1 cursor-pointer text-xl text-red-600 "
+                        wire:click="deleteSession({{ $year->id }})">
+                    <i class="fa-solid fa-circle-minus"></i>
+                    </span> --}}
                     @endif
+
+
                 </li>
                 @empty
                 <li>No result found for search term</li>

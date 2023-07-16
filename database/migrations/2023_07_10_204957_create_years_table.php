@@ -14,9 +14,9 @@ return new class extends Migration {
     {
         Schema::create('years', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->date('start')->nullable();
-            $table->date('end')->nullable();
+            $table->string('session_name')->unique();
+            $table->date('session_start')->nullable();
+            $table->date('session_end')->nullable();
             $table->boolean('is_current')->default(false);
             $table->softDeletes();
             $table->timestamps();
