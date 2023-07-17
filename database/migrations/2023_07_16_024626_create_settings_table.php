@@ -17,11 +17,16 @@ return new class extends Migration {
             $table->string('school_name')->nullable()->unique();
             $table->string('school_logo')->nullable()->unique();
             $table->string('school_email')->nullable()->unique();
+            $table->string('school_country')->nullable()->unique();
+            $table->string('country_code')->nullable()->unique();
+            $table->string('country_currency')->nullable()->unique();
+            $table->json('currencies')->nullable()->unique();
             $table->string('school_phone')->nullable()->unique();
             $table->string('school_type')->nullable()->unique(); //multiple or single school
             $table->string('country')->nullable()->unique();
             $table->string('paystack_pk')->nullable()->unique();
             $table->json('payment_method')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -19,6 +19,7 @@
 
   @php
   $currentTerm = currentTerm();
+  $settings = settings();
   @endphp
 
   <body class="bg-background-50">
