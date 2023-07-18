@@ -47,8 +47,8 @@ class Settings extends Component
 
         $saved = SchoolType::create($data);
         if ($saved) {
-            $this->name = null;
-            $this->alert('success', 'Schools saved successfully');
+            redirect(request()->header('Referer'));
+            return $this->alert('success', 'Schools saved successfully');
         }
     }
     function editType(SchoolType $cat)
@@ -68,9 +68,9 @@ class Settings extends Component
 
         $saved = $cat->update($data);
         if ($saved) {
-            $this->name = null;
-            $this->cid = null;
+            $this->reset();
             $this->alert('success', 'Data updated successfully');
+            return redirectBack();
         }
     }
 

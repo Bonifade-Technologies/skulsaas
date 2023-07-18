@@ -29,5 +29,8 @@ function settings()
 {
  return \App\Models\Setting::first();
 }
-;
+function redirectback()
+{
+ return redirect()->back();
+}
 ?>

@@ -11,7 +11,7 @@
                 class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
                 <div class="items-center sm:flex xl:block 2xl:flex sm:space-x-4 xl:space-x-0 2xl:space-x-4">
                     <input type="file" wire:model.defer="school_logo" id="school_logo" class="hidden">
-                    @if ($con->school_logo && !$school_logo)
+                    @if ($con?->school_logo && !$school_logo)
                     <img src="{{ asset('/storage/' . $con->school_logo) }}" alt="{{ config('app.name') }}"
                         class="mt-2 h-20 w-20 rounded-lg border border-gray-200 object-cover shadow lg:h-24 lg:w-24 xl:h-28 xl:w-28">
                     @elseif($school_logo)
@@ -70,10 +70,11 @@
                         <x-save type="submit" />
                     </div>
                 </form>
+                <x-tooltip pers="to" content="Click to edit" />
                 <div class="flex flex-wrap gap-4">
-                    <x-tooltip pers="type" content="Click to edit" />
-                    @forelse (\App\Models\SchoolType::select('id', 'name')->get() as $item)
-                    <p wire:click="editType({{ $item->id }})" data-tooltip-target="type" data-tooltip-placement="top"
+                    @forelse (\App\Models\SchoolType::select('id', 'name')->get() as $key => $item)
+                    <p id="{{ $key }}" wire:click="editType({{ $item->id }})" data-tooltip-target="to"
+                        data-tooltip-placement="top"
                         class="min-w-[150px] text-center justify-center max-w-[200px] capitalize cursor-pointer tt bg-gray-100 px-3 py-1 rounded shadow">
                         <span>{{ $item->name }}</span>
                     </p>
