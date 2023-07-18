@@ -6,12 +6,14 @@ namespace App\Models;
 use App\Traits\HasOneProfile;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasOneProfile;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, HasOneProfile;
 
     /**
      * The attributes that are mass assignable.
@@ -42,4 +44,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    static function boot()
+    {
+        parent::boot();
+        // creation of automatic school id
+        self::creating(function ($model) {
+            $model->school_id = IdGenerator::generate(['table' => 'users', 'field' => 'school_id', 'length' => 12, 'prefix' => 'ST/ACK/' . date('y') . '/']);
+        });
+
+        self::created(function ($model) {
+            $model->profile()->create([
+                'status' => 'active'
+            ]);
+        });
+    }
 }

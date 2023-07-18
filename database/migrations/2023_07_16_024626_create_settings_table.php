@@ -17,6 +17,9 @@ return new class extends Migration {
             $table->string('school_name')->nullable()->unique();
             $table->string('school_logo')->nullable()->unique();
             $table->string('school_email')->nullable()->unique();
+            $table->string('staff_prefix')->nullable()->unique();
+            $table->string('student_prefix')->nullable()->unique();
+            $table->string('parent_prefix')->nullable()->unique();
             $table->string('school_country')->nullable()->unique();
             $table->string('country_code')->nullable()->unique();
             $table->string('country_currency')->nullable()->unique();

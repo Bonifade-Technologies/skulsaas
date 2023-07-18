@@ -77,14 +77,11 @@ class Settings extends Component
     function mount()
     {
         // $this->showCountry();
-        $this->con = Setting::latest()->first();
-        if ($this->con) {
-            $this->school_logo = $this->con->school_logo;
-        }
+        $this->con = settings();
     }
     public function render()
     {
-        $setting = settings();
-        return view('livewire.settings', compact(['setting']));
+
+        return view('livewire.settings');
     }
 }
