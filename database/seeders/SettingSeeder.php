@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Setting;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,9 @@ class SettingSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Setting::create([
+            'school_name' => 'Bonifade SMS',
+            'school_email' => 'info@bonifade.com',
+        ]);
     }
 }

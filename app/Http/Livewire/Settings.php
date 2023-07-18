@@ -2,12 +2,21 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\SchoolType;
+use App\Models\Setting;
 use Livewire\Component;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Illuminate\Support\Facades\Http;
+use Livewire\WithFileUploads;
 
 class Settings extends Component
 {
+    use WithFileUploads, LivewireAlert;
+    public $school_name, $name, $school_email, $school_logo, $school_country, $school_phone, $country_code, $currencies, $payment_method, $paystack_pk;
     public $cid;
-     public $update = false;
+    public ?array $countries = [];
+    public $con;
+    public $update = false;
     public $form = false;
 
     public ?array $checked = [];
@@ -16,13 +25,66 @@ class Settings extends Component
     public $sortAsc = true;
     public $search = '';
 
-      function showForm()
+    function showForm()
     {
         $this->form = true;
     }
 
+    function showCountry()
+    {
+        // $results = Http::get('https://restcountries.com/v3.1/all?fields=name,idd,flags,currencies,capital');
+        $results = Http::get('http://127.0.0.1:8000/files/responses.json');
+        $this->countries = json_decode($results);
+        // dd($this->countries[0]);
+    }
+
+    function saveSchoolName()
+    {
+        $data = $this->validate(
+            ['name' => 'required|unique:school_types,name'],
+            ['name.unique' => 'School type already exist']
+        );
+
+        $saved = SchoolType::create($data);
+        if ($saved) {
+            redirect(request()->header('Referer'));
+            return $this->alert('success', 'Schools saved successfully');
+        }
+    }
+    function editType(SchoolType $cat)
+    {
+        $this->update = true;
+        $this->name = $cat->name;
+        $this->cid = $cat->id;
+    }
+    function updateSchoolType()
+    {
+        $data = $this->validate(
+            ['name' => 'required|unique:school_types,name,' . $this->cid],
+            ['name.required' => 'School type cannot be empty']
+        );
+
+        $cat = SchoolType::findOrFail($this->cid);
+
+        $saved = $cat->update($data);
+        if ($saved) {
+            $this->reset();
+            $this->alert('success', 'Data updated successfully');
+            return redirectBack();
+        }
+    }
+
+    function mount()
+    {
+        // $this->showCountry();
+        $this->con = Setting::latest()->first();
+        if ($this->con) {
+            $this->school_logo = $this->con->school_logo;
+        }
+    }
     public function render()
     {
-        return view('livewire.settings');
+        $setting = settings();
+        return view('livewire.settings', compact(['setting']));
     }
 }
