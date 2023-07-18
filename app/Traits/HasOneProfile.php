@@ -7,7 +7,7 @@ trait HasOneProfile
 {
  function profile()
  {
-  return $this->morphOne(Profile::class);
+  return $this->morphOne(Profile::class, 'profileable');
  }
 }
 
