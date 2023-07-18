@@ -16,6 +16,16 @@ return new class extends Migration {
             $table->id();
             $table->string('profileable_id');
             $table->string('profileable_type');
+            $table->string('gender')->nullable();
+            $table->string('blood')->nullable();
+            $table->string('address')->nullable();
+            $table->string('occupation')->nullable();
+            $table->date('admitted')->nullable(); //it can be date employed or dated admitted for students
+            $table->string('disability')->nullable();
+            $table->string('religion')->nullable();
+            $table->json('hobbies')->nullable();
+            $table->string('status')->nullable()->default('active');
+            $table->string('reg_class')->nullable();
             $table->timestamps();
         });
     }
