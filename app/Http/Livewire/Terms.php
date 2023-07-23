@@ -44,7 +44,7 @@ class Terms extends Component
     function addSession()
     {
         $data = $this->validate([
-            'session_name' => ['required', 'unique:years,name', 'starts_with:20', new SessionRule, 'size:7'],
+            'session_name' => ['required', 'unique:years,session_name', 'starts_with:20', new SessionRule, 'size:7'],
             'session_start' => 'required|date',
             'session_end' => 'required|date|after:start',
         ]);
@@ -115,17 +115,28 @@ class Terms extends Component
             'dso' => 'nullable|integer',
         ]);
         $terms = Term::where('year_id', $this->year_id)->pluck('name')->toArray();
-        if (in_array($data['name'], $terms) && count($terms) < 3) {
-            $this->alert('warning', 'Duplicate Term, term already existed');
-        } else {
-            $update = Term::find($this->cid)->update($data);
-            $yearId = $this->year_id;
-            if ($update) {
-                $this->reset();
-                $year = Year::find($yearId);
-                $this->setYear($year);
-                $this->alert('success', 'Term updated successfully');
-            }
+        // if (in_array($data['name'], $terms) && count($terms) < 3) {
+        //     $year = $this->year_id;
+        //     $this->alert('warning', 'Duplicate Term, term already existed');
+        //     $this->reset();
+        //     $this->year_id = $year;
+        // } else {
+        //     $update = Term::find($this->cid)->update($data);
+        //     $yearId = $this->year_id;
+        //     if ($update) {
+        //         $this->reset();
+        //         $year = Year::find($yearId);
+        //         $this->setYear($year);
+        //         $this->alert('success', 'Term updated successfully');
+        //     }
+        // }
+        $update = Term::find($this->cid)->update($data);
+        $yearId = $this->year_id;
+        if ($update) {
+            $this->reset();
+            $year = Year::find($yearId);
+            $this->setYear($year);
+            $this->alert('success', 'Term updated successfully');
         }
 
     }

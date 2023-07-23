@@ -106,8 +106,9 @@ $allSessions = \App\Models\Year::get();
             <ul class="flex flex-col p-2 space-y-2 divide-gray-300 text-sm overflow-y-auto max-h-[400px]">
                 @if ($allSessions->count())
                 @forelse ($years as $year)
-                <li wire:click="setYear({{ $year->id }})" class="px-3 relative py-2 tt border border-gray-300 bg-white cursor-pointer flex justify-between items-center rounded tt hover:bg-slate-200'
-                    {{ $year_id == $year->id ? 'bg-slate-100 shadow border-0 font-medium':'' }}">
+                <li wire:click="setYear({{ $year->id }})"
+                    class="px-3 relative py-2 tt border border-gray-300 dark:border-gray-800  cursor-pointer flex justify-between items-center rounded tt hover:bg-slate-200'
+                    {{ $year_id == $year->id ? 'bg-slate-100  shadow border-0 font-medium':'bg-white dark:bg-slate-700 dark:text-white' }}">
                     <span>{{ $year->session_name }}</span>
                     @if ($year->is_current)
                     <x-badge color="green" name="current" />
@@ -117,7 +118,6 @@ $allSessions = \App\Models\Year::get();
                     <i class="fa-solid fa-circle-minus"></i>
                     </span> --}}
                     @endif
-
 
                 </li>
                 @empty
@@ -189,7 +189,7 @@ $allSessions = \App\Models\Year::get();
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                         @forelse ($currentSessionTerms as $term)
-                        <tr class="even:bg-gray-50 dark:hover:bg-gray-700">
+                        <tr class="even:bg-gray-100 dark:even:bg-gray-700">
                             <td
                                 class="px-4 py-2 space-x-2 capitalize text-base text-gray-900 whitespace-nowrap dark:text-white">
                                 <span>{{ $loop->iteration."." }}</span>

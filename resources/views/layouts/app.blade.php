@@ -496,8 +496,8 @@
 
                 <li class="">
                   <a href="{{ route('academics.terms') }}"
-                    class="flex items-center rounded-lg p-2 text-base {{ request()->is('academics/terms') ? 'active':'' }} rounded-lg hover:bg-primary group">
-                    <i class="fa-regular text-[20px] fa-school-circle-check"></i>
+                    class="flex items-center dark:text-gray-200 dark:hover:bg-gray-700 rounded-lg p-2 text-base {{ request()->is('academics/terms') ? 'active':'' }} rounded-lg hover:bg-primary group">
+                    <i class="fa-regular text-[20px] fa-school-circle-check dark:text-gray-400"></i>
                     <span class="ml-3" sidebar-toggle-item>Session</span>
                   </a>
                 </li>
@@ -682,7 +682,8 @@
 
       <div class="fixed inset-0 z-10 hidden  dark:bg-gray-900/90" id="sidebarBackdrop"></div>
 
-      <div id="main-content" class="relative w-full h-full overflow-y-auto lg:ml-64 min-h-full  bg-background-50 ">
+      <div id="main-content"
+        class="relative w-full h-full overflow-y-auto lg:ml-64 min-h-[700px]  bg-background-50 dark:bg-gray-800">
         <main class="pt-6 min-h-full">
           <div class="px-4">
             @yield('content')
