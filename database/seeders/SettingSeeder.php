@@ -18,6 +18,9 @@ class SettingSeeder extends Seeder
         Setting::create([
             'school_name' => 'Bonifade SMS',
             'school_email' => 'info@bonifade.com',
+            'school_country' => 'nigeria',
+            'school_phone' => '7065720177',
+            'country_code' => '+234',
         ]);
     }
 }

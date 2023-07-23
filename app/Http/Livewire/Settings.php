@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\SchoolType;
-use App\Models\Setting;
 use Livewire\Component;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Illuminate\Support\Facades\Http;
@@ -78,6 +77,10 @@ class Settings extends Component
     {
         // $this->showCountry();
         $this->con = settings();
+        $this->school_country = $this->con->school_country;
+        $this->school_email = $this->con->school_email;
+        $this->school_name = $this->con->school_name;
+        $this->school_phone = $this->con->school_phone;
     }
     public function render()
     {
