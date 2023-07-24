@@ -27,7 +27,7 @@ function getCountries()
 
 function settings()
 {
- return \App\Models\Setting::first();
+ return \App\Models\Setting::with('media')->first();
 }
 function redirectback()
 {

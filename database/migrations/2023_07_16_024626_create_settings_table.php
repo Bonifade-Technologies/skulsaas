@@ -14,20 +14,20 @@ return new class extends Migration {
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('school_name')->nullable()->unique();
-            $table->string('school_logo')->nullable()->unique();
-            $table->string('school_email')->nullable()->unique();
-            $table->string('staff_prefix')->nullable()->unique();
-            $table->string('student_prefix')->nullable()->unique();
-            $table->string('parent_prefix')->nullable()->unique();
-            $table->string('school_country')->nullable()->unique();
-            $table->string('country_code')->nullable()->unique();
-            $table->string('country_currency')->nullable()->unique();
-            $table->json('currencies')->nullable()->unique();
-            $table->string('school_phone')->nullable()->unique();
-            $table->string('school_type')->nullable()->unique(); //multiple or single school
-            $table->string('country')->nullable()->unique();
-            $table->string('paystack_pk')->nullable()->unique();
+            $table->string('school_name')->nullable();
+            $table->string('school_logo')->nullable();
+            $table->string('school_email')->nullable();
+            $table->string('staff_prefix')->nullable();
+            $table->string('student_prefix')->nullable();
+            $table->string('parent_prefix')->nullable();
+            $table->string('school_country')->nullable();
+            $table->string('country_code')->nullable();
+            $table->string('country_currency')->nullable();
+            $table->json('currencies')->nullable();
+            $table->string('school_phone')->nullable();
+            $table->string('school_type')->nullable(); //multiple or single school
+            $table->string('country')->nullable();
+            $table->string('paystack_pk')->nullable();
             $table->json('payment_method')->nullable();
             $table->softDeletes();
             $table->timestamps();

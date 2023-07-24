@@ -36,7 +36,38 @@ class Settings extends Component
         $this->countries = json_decode($results);
         // dd($this->countries[0]);
     }
+    function updateSchoolInfo()
+    {
+        $data = $this->validate(
+            [
+                'school_name' => 'required',
+                'school_country' => 'required',
+                'school_phone' => 'required|digits:10|unique:settings,school_phone,' . $this->con->id,
+                'school_email' => 'required|email|unique:settings,school_email,' . $this->con->id
+            ],
+            [
+                'school_phone.unique' => 'phone number already exist',
+                'school_phone.digits' => 'phone number must be 10 digits number',
+                'school_email.unique' => 'email number already exist'
+            ]
+        );
 
+        $saved = $this->con->update($data);
+        if ($saved) {
+            $this->reset();
+            $this->alert('success', 'School info updated successfully');
+            $this->mount();
+            return redirect()->back();
+        }
+    }
+
+
+    function uploadSchoolLogo()
+    {
+        $this->con->addMedia($this->school_logo->getRealPath())
+            ->usingName($this->school_logo->getClientOriginalName())
+            ->toMediaCollection('setting');
+    }
     function saveSchoolName()
     {
         $data = $this->validate(
