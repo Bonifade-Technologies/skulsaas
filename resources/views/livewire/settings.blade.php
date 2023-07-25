@@ -11,9 +11,10 @@
             class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
             <div class="items-center sm:flex xl:block 2xl:flex sm:space-x-4 xl:space-x-0 2xl:space-x-4">
                 <input type="file" wire:model.defer="school_logo" id="school_logo" class="hidden">
-                <img src="{{ $con->getFirstMediaUrl('setting') }}" alt="{{ config($con?->school_name) }}" class="mt-2 h-20 w-20 rounded-lg border border-gray-200 object-cover shadow lg:h-24 lg:w-24 xl:h-28
+                <img src="{{ $school_logo ? $school_logo->temporaryUrl(): $con?->getFirstMediaUrl('setting') }}"
+                    alt="{{ config($con?->school_name) }}" class="mt-2 h-20 w-20 rounded-full border border-gray-200 object-cover shadow lg:h-24 lg:w-24 xl:h-28
         xl:w-28">
-                <div>
+                <form wire:submit.prevent="changeSchoolLogo">
                     <h3 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">School Logo</h3>
                     <div class="mb-4 text-sm text-gray-500 dark:text-gray-400">
                         @if ($errors->any())
@@ -48,7 +49,7 @@
                             Delete
                         </button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
         <div

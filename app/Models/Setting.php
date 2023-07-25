@@ -24,6 +24,6 @@ class Setting extends Model implements HasMedia
     {
         $this->addMediaCollection('setting')
             ->singleFile()
-            ->useFallbackUrl(public_path('/img/avatar.png'));
+            ->useFallbackUrl(asset('/img/avatar.png'));
     }
 }

@@ -62,11 +62,16 @@ class Settings extends Component
     }
 
 
-    function uploadSchoolLogo()
+    function changeSchoolLogo()
     {
-        $this->con->addMedia($this->school_logo->getRealPath())
+        $changed = $this->con->addMedia($this->school_logo->getRealPath())
             ->usingName($this->school_logo->getClientOriginalName())
             ->toMediaCollection('setting');
+        if ($changed) {
+            $this->reset();
+            $this->alert('success', 'Logo updated successfully');
+            return $this->mount();
+        }
     }
     function saveSchoolName()
     {
