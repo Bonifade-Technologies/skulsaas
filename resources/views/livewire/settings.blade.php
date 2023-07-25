@@ -12,10 +12,11 @@
             <div class="items-center sm:flex xl:block 2xl:flex sm:space-x-4 xl:space-x-0 2xl:space-x-4">
                 <input type="file" wire:model.defer="school_logo" id="school_logo" class="hidden">
                 <img src="{{ $school_logo ? $school_logo->temporaryUrl(): $con?->getFirstMediaUrl('setting') }}"
-                    alt="{{ config($con?->school_logo) }}" class="mt-2 h-20 w-20 rounded-full border border-gray-200 object-cover shadow lg:h-24 lg:w-24 xl:h-28
+                    alt="{{ $con?->school_logo }}" class="mt-2 h-20 w-20 rounded-full border border-gray-200 object-cover shadow lg:h-24 lg:w-24 xl:h-28
         xl:w-28">
                 <div>
-                    <h3 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">School Logo</h3>
+                    <h3 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">School Logo
+                    </h3>
                     <div class="mb-4 text-sm text-gray-500 dark:text-gray-400">
                         @if ($errors->any())
                         @error('school_logo')
@@ -40,14 +41,15 @@
                         </button>
                         @else
                         <label for="school_logo"
-                            class="px-4 py-2 text-sm rounded-full shadow bg-gray-200 text-black cursor-pointer">Choose
-                            Logo</label>
+                            class="px-4 py-2 text-sm rounded-full shadow bg-gray-200 text-black cursor-pointer">{{ $con?->school_logo ? 'Change logo': 'Choose
+                            Logo' }}</label>
                         @endif
-
+                        @if ($school_logo)
                         <button wire:click="removeLogo()"
                             class="py-2 px-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-900 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                             Delete
                         </button>
+                        @endif
                     </div>
                 </div>
             </div>

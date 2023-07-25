@@ -2,11 +2,12 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\SchoolType;
 use Livewire\Component;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Illuminate\Support\Facades\Http;
+use App\Models\SchoolType;
 use Livewire\WithFileUploads;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Http;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Settings extends Component
 {
@@ -42,13 +43,20 @@ class Settings extends Component
             [
                 'school_name' => 'required',
                 'school_country' => 'required',
-                'school_phone' => 'required|digits:10|unique:settings,school_phone,' . $this->con->id,
-                'school_email' => 'required|email|unique:settings,school_email,' . $this->con->id
+                'school_phone' => [
+                    'required',
+                    'digits:10',
+                    Rule::unique('settings', 'school_phone')->ignore($this->con->id)
+                ],
+                'school_email' => [
+                    'required',
+                    'email', Rule::unique('settings', 'school_email')->ignore($this->con->id)
+                ]
             ],
             [
                 'school_phone.unique' => 'phone number already exist',
                 'school_phone.digits' => 'phone number must be 10 digits number',
-                'school_email.unique' => 'email number already exist'
+                'school_email.unique' => 'email already exist'
             ]
         );
 
@@ -65,7 +73,7 @@ class Settings extends Component
     function changeSchoolLogo()
     {
         $data = $this->validate(['school_logo' => 'required|image|max:512']);
-        $upd = $this->con->update(['school_logo' => $this->school_logo->getRealPath()]);
+        $upd = $this->con->update(['school_logo' => $this->school_logo->getClientOriginalName()]);
         if ($upd) {
             $changed = $this->con->addMedia($this->school_logo->getRealPath())
                 ->usingName($this->school_logo->getClientOriginalName())
@@ -81,7 +89,13 @@ class Settings extends Component
 
     function removeLogo()
     {
-        $this->reset();
+        if ($this->school_logo) {
+            $this->reset();
+        } else {
+            $this->con->getFirstMedia('setting')->delete();
+            $this->alert('success', 'Logo removed successfully');
+        }
+
         $this->mount();
     }
     function saveSchoolName()
@@ -124,10 +138,11 @@ class Settings extends Component
     {
         // $this->showCountry();
         $this->con = settings();
-        $this->school_country = $this->con->school_country;
-        $this->school_email = $this->con->school_email;
-        $this->school_name = $this->con->school_name;
-        $this->school_phone = $this->con->school_phone;
+        $this->cid = $this->con?->cid;
+        $this->school_country = $this->con?->school_country;
+        $this->school_email = $this->con?->school_email;
+        $this->school_name = $this->con?->school_name;
+        $this->school_phone = $this->con?->school_phone;
     }
     public function render()
     {
