@@ -12,13 +12,13 @@
             <div class="items-center sm:flex xl:block 2xl:flex sm:space-x-4 xl:space-x-0 2xl:space-x-4">
                 <input type="file" wire:model.defer="school_logo" id="school_logo" class="hidden">
                 <img src="{{ $school_logo ? $school_logo->temporaryUrl(): $con?->getFirstMediaUrl('setting') }}"
-                    alt="{{ config($con?->school_name) }}" class="mt-2 h-20 w-20 rounded-full border border-gray-200 object-cover shadow lg:h-24 lg:w-24 xl:h-28
+                    alt="{{ config($con?->school_logo) }}" class="mt-2 h-20 w-20 rounded-full border border-gray-200 object-cover shadow lg:h-24 lg:w-24 xl:h-28
         xl:w-28">
-                <form wire:submit.prevent="changeSchoolLogo">
+                <div>
                     <h3 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">School Logo</h3>
                     <div class="mb-4 text-sm text-gray-500 dark:text-gray-400">
                         @if ($errors->any())
-                        @error('changeProfileImage')
+                        @error('school_logo')
                         <span class="mb-2 text-red-600">{{ $message }}</span>
                         @enderror
                         @else
@@ -27,7 +27,7 @@
                     </div>
                     <div class="flex items-center space-x-4">
                         @if ($school_logo)
-                        <button
+                        <button wire:click="changeSchoolLogo()"
                             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                             <svg class="w-4 h-4 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -44,12 +44,12 @@
                             Logo</label>
                         @endif
 
-                        <button wire:click="removeProfilePicture()"
+                        <button wire:click="removeLogo()"
                             class="py-2 px-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-900 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                             Delete
                         </button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
         <div
