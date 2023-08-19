@@ -16,7 +16,7 @@ function currentSession(): object|null
 function currentTerm(): object|null
 {
  $terms = \App\Models\Term::get();
- return $terms->count() ? \App\Models\Term::with(['year:id,session_name'])->latest()->first() : null;
+ return $terms->count() ? \App\Models\Term::with(['year:id,session_name'])->orderByDesc('id')->first() : null;
 }
 
 function getCountries()

@@ -108,9 +108,7 @@
                 <a href="#"
                   class="flex px-4 py-3 border-b hover:bg-primary dark:hover:bg-gray-600 dark:border-gray-600">
                   <div class="flex-shrink-0">
-                    <img class="rounded-full w-11 h-11"
-                      src="https://flowbite-admin-dashboard.vercel.app/images/users/bonnie-green.png"
-                      alt="Jese image" />
+                    <img class="rounded-full w-11 h-11" src="" alt="Jese image" />
                     <div
                       class="absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 border border-white rounded-full bg-primary-700 dark:border-gray-700">
                       <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"
@@ -138,8 +136,7 @@
                 <a href="#"
                   class="flex px-4 py-3 border-b hover:bg-primary dark:hover:bg-gray-600 dark:border-gray-600">
                   <div class="flex-shrink-0">
-                    <img class="rounded-full w-11 h-11"
-                      src="https://flowbite-admin-dashboard.vercel.app/images/users/jese-leos.png" alt="Jese image" />
+                    <img class="rounded-full w-11 h-11" src="{{ asset('img/avatar.png') }}" alt="Jese image" />
                     <div
                       class="absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-gray-900 border border-white rounded-full dark:border-gray-700">
                       <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"
@@ -165,9 +162,7 @@
                 <a href="#"
                   class="flex px-4 py-3 border-b hover:bg-primary dark:hover:bg-gray-600 dark:border-gray-600">
                   <div class="flex-shrink-0">
-                    <img class="rounded-full w-11 h-11"
-                      src="https://flowbite-admin-dashboard.vercel.app/images/users/joseph-mcfall.png"
-                      alt="Joseph image" />
+                    <img class="rounded-full w-11 h-11" src="{{ asset('img/avatar.png') }}" alt="Joseph image" />
                     <div
                       class="absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-red-600 border border-white rounded-full dark:border-gray-700">
                       <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"
@@ -193,9 +188,7 @@
                 <a href="#"
                   class="flex px-4 py-3 border-b hover:bg-primary dark:hover:bg-gray-600 dark:border-gray-600">
                   <div class="flex-shrink-0">
-                    <img class="rounded-full w-11 h-11"
-                      src="https://flowbite-admin-dashboard.vercel.app/images/users/leslie-livingston.png"
-                      alt="Leslie image" />
+                    <img class="rounded-full w-11 h-11" src="{{ asset('img/avatar.png') }}" alt="Leslie image" />
                     <div
                       class="absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-green-400 border border-white rounded-full dark:border-gray-700">
                       <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"
@@ -220,9 +213,7 @@
                 </a>
                 <a href="#" class="flex px-4 py-3 hover:bg-primary dark:hover:bg-gray-600">
                   <div class="flex-shrink-0">
-                    <img class="rounded-full w-11 h-11"
-                      src="https://flowbite-admin-dashboard.vercel.app/images/users/robert-brown.png"
-                      alt="Robert image" />
+                    <img class="rounded-full w-11 h-11" src="{{ asset('img/avatar.png') }}" alt="Robert image" />
                     <div
                       class="absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-purple-500 border border-white rounded-full dark:border-gray-700">
                       <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"
@@ -296,8 +287,7 @@
                   class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                   id="user-menu-button-2" aria-expanded="false" data-dropdown-toggle="dropdown-2">
                   <span class="sr-only">Open user menu</span>
-                  <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                    alt="user photo" />
+                  <img class="w-8 h-8 rounded-full" src="" alt="user photo" />
                 </button>
               </div>
 
@@ -407,7 +397,7 @@
 
               </ul>
               <div class="pt-2 space-y-2">
-                <a href="https://github.com/themesberg/flowbite-admin-dashboard/issues" target="_blank"
+                <a href="" target="_blank"
                   class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg hover:bg-primary group dark:text-gray-200 dark:hover:bg-gray-700">
                   <svg
                     class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
