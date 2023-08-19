@@ -17,7 +17,7 @@ class SwitchRole extends Component
         if ($save) {
             $this->reset();
             $this->alert('success', 'Role switch to ' . $role->name . ' successfully');
-            return redirect('/home')->with('success', 'Role switch to ' . $role->name . ' successfully');
+            return redirect(request()->header('Referer'))->with('success', 'Role switch to ' . $role->name . ' successfully');
         }
     }
 

@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/test', function () {
-    return authUserFirstRole();
+    return currentUserPermissions();
     // return \App\Models\Year::with('terms')->get()->toArray();
 });
 

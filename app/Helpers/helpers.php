@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use PhpParser\Node\Expr\Cast\Object_;
 
@@ -32,5 +33,19 @@ function settings()
 function redirectback()
 {
  return redirect()->back();
+}
+
+function currentUserPermissions(): array|null
+{
+ $permissions = \App\Models\Permission::
+  select('name')
+  ->whereRelation('users', 'id', Auth::id())
+  ->orWhereRelation('roles', 'id', auth()->user()->current_role_id)
+  ->get();
+ $result = [];
+ foreach ($permissions as $perm) {
+  array_push($result, $perm->name);
+ }
+ return $result;
 }
 ?>
