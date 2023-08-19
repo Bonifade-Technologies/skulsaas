@@ -77,6 +77,7 @@ class Settings extends Component
         if ($upd) {
             $changed = $this->con->addMedia($this->school_logo->getRealPath())
                 ->usingName($this->school_logo->getClientOriginalName())
+                ->setFileName($this->school_logo->getClientOriginalName())
                 ->toMediaCollection('setting');
         }
 

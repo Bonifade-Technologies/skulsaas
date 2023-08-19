@@ -19,6 +19,7 @@
 
   @php
   $currentTerm = currentTerm();
+  $settings = \Route::currentRouteName() == 'settings' ? null : settings();
   @endphp
 
   <body class="bg-background-50">
@@ -41,10 +42,11 @@
                   clip-rule="evenodd"></path>
               </svg>
             </button>
-            <a href="/" class="flex ml-2 md:mr-24">
-              <img src="{{ asset('img/logo.jpg') }}" class="h-6 mr-3" alt="FlowBite Logo" />
+            <a href="/home" class="flex items-center ml-2 md:mr-24">
+              <img src="{{ $settings?->getFirstMediaUrl('setting') ?? asset('img/logo.jpg') }}"
+                class="h-auto mr-3 aspect-square rounded-full object-cover w-8" alt="{{ $settings?->school_name ?? 'Bonifade SMS' }}" />
               <span
-                class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">{{ config('app.name') }}</span>
+                class="self-center uppercase {{ strlen($settings?->school_name) > 15 ? 'text-lg': 'text-xl'}}  font-medium whitespace-nowrap dark:text-white">{{ config('schoolname') }}</span>
             </a>
             {{-- <form action="#" method="GET" class="hidden lg:block lg:pl-3.5">
               <label for="topbar-search" class="sr-only">Search</label>
@@ -481,10 +483,10 @@
                   </form>
                 </li>
                 <li>
-                  <a href="/"
-                    class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-primary group dark:text-gray-200 dark:hover:bg-gray-700">
+                  <a href="/home"
+                    class="flex items-center p-2 {{ request()->is('home') ? 'active':'' }} text-base text-gray-900 rounded-lg hover:bg-primary group dark:text-gray-200 dark:hover:bg-gray-700">
                     <svg
-                      class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                      class="w-6 h-6 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                       fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                       <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
                       <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>

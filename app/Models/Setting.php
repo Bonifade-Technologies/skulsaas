@@ -20,6 +20,15 @@ class Setting extends Model implements HasMedia
         'payment_method' => 'array',
     ];
 
+    static function boot(){
+        parent::boot();
+        self::created(function($model){
+            $don = config(['schoolname' => $model->school_name]);
+            // $model->getFirstMedia('setting')->setFileName($don)->save();
+            \Log::info(config('schoolname'));
+        });
+    }
+
     function registerMediaCollections(): void
     {
         $this->addMediaCollection('setting')
