@@ -20,6 +20,7 @@
   @php
   $currentTerm = currentTerm();
   $settings = \Route::currentRouteName() == 'settings' ? null : settings();
+  $permissions = currentUserPermissions();
   @endphp
 
   <body class="bg-background-50">
@@ -373,7 +374,7 @@
                     <span class="ml-3" sidebar-toggle-item>Dashboard</span>
                   </a>
                 </li>
-
+                @if (in_array("years-read", $permissions))
                 <li class="">
                   <a href="{{ route('academics.terms') }}"
                     class="flex items-center dark:text-gray-200 dark:hover:bg-gray-700 rounded-lg p-2 text-base {{ request()->is('academics/terms') ? 'active':'' }} rounded-lg hover:bg-primary group">
@@ -381,6 +382,9 @@
                     <span class="ml-3" sidebar-toggle-item>Session</span>
                   </a>
                 </li>
+                @endif
+
+
                 <li>
                   <a href="{{ route('settings') }}"
                     class="flex items-center p-2 text-base {{ request()->is('admin/settings') ? 'active':'' }} text-gray-900 rounded-lg hover:bg-primary group dark:text-gray-200 dark:hover:bg-gray-700">
