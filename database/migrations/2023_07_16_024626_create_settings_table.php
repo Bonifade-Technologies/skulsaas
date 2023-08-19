@@ -15,7 +15,7 @@ return new class extends Migration {
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Tenant::class)->nullable()->constrained()->nullOnDelete();
+            $table->foreignIdFor(Tenant::class)->nullable()->constrained()->cascadeOnDelete();
             $table->string('school_name')->nullable();
             $table->string('school_logo')->nullable();
             $table->string('school_email')->nullable();
