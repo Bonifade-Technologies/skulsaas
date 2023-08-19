@@ -196,7 +196,7 @@ class Terms extends Component
     {
         $currentSessionTerms = $this->activeSession ? $this->activeSession->terms : [];
         $term = "%$this->search%";
-        $years = Year::where('session_name', 'LIKE', $term)->latest()->simplePaginate($this->perPage);
+        $years = Year::where('session_name', 'LIKE', $term)->orderByDesc('id')->simplePaginate($this->perPage);
         return view('livewire.terms', compact(['years', 'currentSessionTerms']));
     }
 }
