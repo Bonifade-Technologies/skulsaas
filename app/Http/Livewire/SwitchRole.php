@@ -4,14 +4,15 @@ namespace App\Http\Livewire;
 
 use App\Models\Role;
 use Livewire\Component;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class SwitchRole extends Component
 {
+    use LivewireAlert;
     public $cid, $role;
 
     function switchRole(Role $role)
     {
-        dd($role);
         $save = currentUser()->update(['current_role_id' => $role->id]);
         if ($save) {
             $this->reset();

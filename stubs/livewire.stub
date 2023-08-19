@@ -1,11 +1,12 @@
 <?php
 
 namespace [namespace];
-
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class [class] extends Component
 {
+    use LivewireAlert;
     public $cid;
      public $update = false;
     public $form = false;
