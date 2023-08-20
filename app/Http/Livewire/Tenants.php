@@ -41,7 +41,7 @@ class Tenants extends Component
     {
         $data = $this->validate([
             'name' => ['required', 'unique:tenants,name'],
-            'domain' => ['nullable', 'unique:tenants,domain', 'ends_with:'],
+            'domain' => ['nullable', 'unique:tenants,domain'],
             'status' => ['nullable'],
         ]);
 

@@ -45,8 +45,8 @@ class Tenant extends Model
                 'country_code' => '+234',
                 'school_email' => 'info@' . Str::slug($tenant->name) . '.com',
             ]);
-
-            auth()->user() ? auth()->user()->tenants()->attach($tenant->id) : null; // attach user to tenants if authenticated
+            auth()->user()->update(['current_tenant_id' => $tenant->id]);
+            auth()->user()->tenants()->attach($tenant->id); // attach user to tenants if authenticated
         });
     }
 }

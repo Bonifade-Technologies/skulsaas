@@ -69,7 +69,7 @@
             <div class=" bg-background-50 mx-auto w-full p-2 rounded text-sm shadow hidden lg:block lg:ml-12 uppercase">
               @if ($currentTerm)
               current term: <b class="text-green-500">{{ $currentTerm->name. " term " }}</b> of
-              <b class="text-green-500">{{ $currentTerm->year->session_name . " session"}}</b>
+              <b class="text-green-500">{{ $currentTerm->year?->session_name . " session"}}</b>
               @else
               <span>No term yet, kindly create session and term</span>
               @endif
