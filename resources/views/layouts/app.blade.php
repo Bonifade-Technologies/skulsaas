@@ -365,15 +365,19 @@
                 <li>
                   <a href="/home"
                     class="flex items-center p-2 {{ request()->is('home') ? 'active':'' }} text-base text-gray-900 rounded-lg hover:bg-primary group dark:text-gray-200 dark:hover:bg-gray-700">
-                    <svg
-                      class="w-6 h-6 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                      fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
-                      <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
-                    </svg>
+                    <i class="fa-solid text-[20px] fa-gauge dark:text-gray-400"></i>
                     <span class="ml-3" sidebar-toggle-item>Dashboard</span>
                   </a>
                 </li>
+                @if (in_array("tenants-read", $permissions))
+                <li class="">
+                  <a href="{{ route('tenants') }}"
+                    class="flex items-center dark:text-gray-200 dark:hover:bg-gray-700 rounded-lg p-2 text-base {{ request()->is('superadmin/tenants') ? 'active':'' }} rounded-lg hover:bg-primary group">
+                    <i class="fa-solid text-[20px] fa-house-user dark:text-gray-400"></i>
+                    <span class="ml-3" sidebar-toggle-item>Tenants</span>
+                  </a>
+                </li>
+                @endif
                 @if (in_array("years-read", $permissions))
                 <li class="">
                   <a href="{{ route('academics.terms') }}"

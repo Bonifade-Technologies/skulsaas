@@ -27,6 +27,9 @@ class Tenant extends Model
     {
         parent::boot();
         self::creating(function ($tenant) {
+            $slug = Str::slug($tenant->name);
+            $tenant->domain = $slug;
+            $tenant->attach(auth()->user()->id); // attach user to tenants
             $tenant->settings([
                 'school_name' => $tenant->name,
                 'school_country' => 'Nigeria',

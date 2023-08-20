@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\FilterByTenant;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,7 +11,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Setting extends Model implements HasMedia
 {
-    use HasFactory, SoftDeletes, InteractsWithMedia;
+    use HasFactory, SoftDeletes, InteractsWithMedia, FilterByTenant;
 
     protected $guarded = [];
 
@@ -20,9 +21,10 @@ class Setting extends Model implements HasMedia
         'payment_method' => 'array',
     ];
 
-    static function boot(){
+    static function boot()
+    {
         parent::boot();
-        self::created(function($model){
+        self::created(function ($model) {
             $don = config(['schoolname' => $model->school_name]);
             // $model->getFirstMedia('setting')->setFileName($don)->save();
             \Log::info(config('schoolname'));

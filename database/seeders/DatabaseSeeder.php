@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            TenantSeeder::class,
             LaratrustSeeder::class,
             UserSeeder::class,
             YearSeeder::class,

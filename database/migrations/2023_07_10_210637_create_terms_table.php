@@ -1,9 +1,10 @@
 <?php
 
 use App\Models\Year;
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Tenant;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration {
     /**
@@ -15,6 +16,7 @@ return new class extends Migration {
     {
         Schema::create('terms', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(Tenant::class)->nullable()->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Year::class)->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->date('start');
