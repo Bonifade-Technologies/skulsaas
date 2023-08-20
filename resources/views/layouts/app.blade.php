@@ -377,7 +377,7 @@
                 @if (in_array("years-read", $permissions))
                 <li class="">
                   <a href="{{ route('academics.terms') }}"
-                    class="flex items-center dark:text-gray-200 dark:hover:bg-gray-700 rounded-lg p-2 text-base {{ request()->is('admin/terms') ? 'active':'' }} rounded-lg hover:bg-primary group">
+                    class="flex items-center dark:text-gray-200 dark:hover:bg-gray-700 rounded-lg p-2 text-base {{ request()->is('academics/terms') ? 'active':'' }} rounded-lg hover:bg-primary group">
                     <i class="fa-regular text-[20px] fa-school-circle-check dark:text-gray-400"></i>
                     <span class="ml-3" sidebar-toggle-item>Session</span>
                   </a>
