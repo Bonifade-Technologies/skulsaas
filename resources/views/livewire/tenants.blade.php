@@ -6,6 +6,7 @@
                 <x-title title="School List" />
             </div>
         </div>
+
         <div class="items-center justify-between block sm:flex md:divide-x md:divide-gray-100 dark:divide-gray-700">
             <div class="flex items-center mb-4 sm:mb-0">
                 <x-search />
@@ -56,205 +57,122 @@
             <x-add title="School" />
         </div>
         <div class="w-full overflow-x-auto rounded-lg">
-            {{-- <table
-                class="w-full divide-y rounded-lg min-w-[550px] divide-gray-200 table-fixed dark:divide-gray-600 overflow-x-auto">
-                <thead class="bg-gray-100 dark:bg-gray-700">
-                    <tr class="">
-                        <th class="text-xs px-4 font-medium text-left text-gray-500 uppercase dark:text-gray-400"
-                            style="max-width: 50px!important">
-                            <span class="flex items-center space-x-2">
+            <div class="w-full border overflow-x-auto shadow-sm rounded-lg">
+                <table class="w-full overflow-x-auto rounded divide-y">
+                    <thead class="text-xs p-2">
+                        <tr class="font-medium text-left bg-gray-100 uppercase text-gray-500">
+                            <th class="p-2 text-center">
                                 <input type="checkbox" class="select-input">
-                                <button class="cursor-pointer {{ $sortField == 'id' ? 'font-bold text-gray-700': '' }}"
-            wire:click="sortBy('id')">
-            <span> S/N</span>
-            </button>
-            </span>
-            </th>
-            <th scope="col" class="p-4 w-1/4  text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                <button class="cursor-pointer uppercase {{ $sortField == 'name' ? 'font-bold text-gray-700': '' }}"
-                    wire:click="sortBy('name')">
-                    <span> School name</span>
-                    <span class="transition ">
-                        <i
-                            class="fa-solid fa-angle-up {{ $sortField == 'name' && $sortAsc == 'desc' ? 'rotate-180' : '' }}"></i>
-                    </span>
-                </button>
-            </th>
-            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                Domain
-            </th>
-            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                Renewal date
-            </th>
+                            </th>
+                            <th class="">
+                                <button
+                                    class="cursor-pointer {{ $sortField == 'id' ? 'font-bold text-gray-700': 'text-gray-500' }}"
+                                    wire:click="sortBy('id')">
+                                    <span> S/N</span>
+                                    <span class="transition">
+                                        <i
+                                            class="fa-solid fa-angle-up {{ $sortField == 'id' && $sortAsc == 'desc' ? 'rotate-180' : '' }}"></i>
+                                    </span>
+                                </button>
+                            </th>
+                            <th class="p-4">
+                                <button
+                                    class="cursor-pointer uppercase {{ $sortField == 'name' ? 'font-bold text-gray-700': '' }}"
+                                    wire:click="sortBy('name')">
+                                    <span> School name</span>
+                                    <span class="transition ">
+                                        <i
+                                            class="fa-solid fa-angle-up {{ $sortField == 'name' && $sortAsc == 'desc' ? 'rotate-180' : '' }}"></i>
+                                    </span>
+                                </button>
+                            </th>
+                            <th class="p-4">
+                                <button
+                                    class="cursor-pointer uppercase {{ $sortField == 'domain' ? 'font-bold text-gray-700': '' }}"
+                                    wire:click="sortBy('domain')">
+                                    <span>domain</span>
+                                    <span class="transition ">
+                                        <i
+                                            class="fa-solid fa-angle-up {{ $sortField == 'domain' && $sortAsc == 'desc' ? 'rotate-180' : '' }}"></i>
+                                    </span>
+                                </button>
+                            </th>
+                            <th class="p-4">
+                                <button
+                                    class="cursor-pointer uppercase {{ $sortField == 'created_at' ? 'font-bold text-gray-700': '' }}"
+                                    wire:click="sortBy('created_at')">
+                                    <span>Renewal date</span>
+                                    <span class="transition ">
+                                        <i
+                                            class="fa-solid fa-angle-up {{ $sortField == 'created_at' && $sortAsc == 'desc' ? 'rotate-180' : '' }}"></i>
+                                    </span>
+                                </button>
+                            </th>
+                            <th class="p-4">
+                                <button
+                                    class="cursor-pointer uppercase {{ $sortField == 'status' ? 'font-bold text-gray-700': '' }}"
+                                    wire:click="sortBy('status')">
+                                    <span>status</span>
+                                    <span class="transition ">
+                                        <i
+                                            class="fa-solid fa-angle-up {{ $sortField == 'status' && $sortAsc == 'desc' ? 'rotate-180' : '' }}"></i>
+                                    </span>
+                                </button>
+                            </th>
+                            <th class="p-4">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($tenants as $tenant)
+                        <tr class="text-base border-b even:bg-gray-100 dark:even:bg-gray-700">
+                            <td class="py-2 px-4 text-center">
+                                <input type="checkbox" value="{{ $tenant->id }}" wire:model="checked"
+                                    class="select-input">
+                            </td>
+                            <td class="p-2">{{ $loop->iteration }}</td>
+                            <td class="py-2 text-sm px-4 capitalize">{{ $tenant->name }}</td>
+                            <td class="py-2 px-4">
+                                <a href="{{ 'http://'.$tenant->domain }}" target="_blank"
+                                    class="text-sm hover:underline hover:text-blue-600">{{'www.'. $tenant->domain }}</a>
+                            </td>
+                            <td class="py-2 px-4">
+                                <span class="text-sm">
+                                    {{ $tenant->created_at->addDays(300)->format('d M, Y') }}</span>
+                            </td>
+                            <td class="py-2 px-4"> <span
+                                    class="{{ statusColor($tenant->status) }} status">{{ $tenant->status }}</span>
+                            </td>
+                            <td class="p-2 space-x-2 flex items-center whitespace-nowrap">
+                                <button wire:click="editSchool({{ $tenant->id }})" data-tooltip-target="edit"
+                                    data-tooltip-placement="left"
+                                    class="h-7 w-7 border-blue-600 border rounded-md text-blue-600">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <button wire:click="confirmDelete({{ $tenant->id }})" data-tooltip-target="delete"
+                                    data-tooltip-placement="left"
+                                    class="h-7 w-7 border-red-600 border rounded-md text-red-600">
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        @empty
 
-            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                Status
-            </th>
-            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                Actions
-            </th>
-            </tr>
-            </thead>
-            <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-                @forelse ($tenants as $tenant)
-                <tr class="even:bg-gray-100 dark:even:bg-gray-700">
-                    <td class="px-4 py-2 capitalize text-base text-gray-900 dark:text-white"
-                        style="mix-width: 500px!important">
-                        <span class="flex items-center space-x-3">
-                            <input type="checkbox" wire:model="checked" value="{{ $tenant->id }}" class="select-input">
-                            <span>{{ $loop->iteration}}</span>
-                        </span>
-
-                    </td>
-                    <td class="px-4 capitalize text-sm py-2 text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ $tenant->name }}
-                    </td>
-                    <td class="px-4 text-sm py-2 text-gray-900 whitespace-nowrap dark:text-white">
-                        <a href="{{ $tenant->domain }}" class="cursor-pointer">{{ $tenant->domain }}</a>
-                    </td>
-                    <td class="px-4 text-sm py-2 text-gray-900 whitespace-nowrap dark:text-white">
-                        <span>
-                            {{ $tenant->created_at->addDays(300)->format('d M, Y') }}</span>
-                    </td>
-                    <td class="px-4 py-2 text-base text-gray-900 whitespace-nowrap dark:text-white">
-                        <span class="{{ statusColor($tenant->status) }} status">{{ $tenant->status }}</span>
-                    </td>
-                    <td class="p-2 space-x-2 flex items-center whitespace-nowrap">
-                        <button wire:click="editTenant({{ $tenant->id }})" data-tooltip-target="edit"
-                            data-tooltip-placement="left"
-                            class="h-7 w-7 border-blue-600 border rounded-md text-blue-600">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </button>
-                        <button wire:click="confirmDelete({{ $tenant->id }})" data-tooltip-target="delete"
-                            data-tooltip-placement="left" class="h-7 w-7 border-red-600 border rounded-md text-red-600">
-                            <i class="fa-regular fa-trash-can"></i>
-                        </button>
-                    </td>
-                    {{-- edit tooltip 
+                        @endforelse
+                        {{-- edit tooltip --}}
                         <x-tooltip pers="edit" content="Edit School" />
 
-                        {{-- edit tooltip 
+                        {{-- edit tooltip --}}
                         <x-tooltip pers="delete" content="Delete School" />
-
-                    </tr>
-                    @empty
-
-                    @endforelse
-
-                </tbody>
-            </table>--}}
-                    <div class="w-full border overflow-x-auto shadow-sm rounded-lg">
-                        <table class="w-full overflow-x-auto rounded divide-y">
-                            <thead class="text-xs p-2">
-                                <tr class="font-medium text-left bg-gray-100 uppercase text-gray-500">
-                                    <th class="p-2 text-center">
-                                        <input type="checkbox" class="select-input">
-                                    </th>
-                                    <th class="">
-                                        <button
-                                            class="cursor-pointer {{ $sortField == 'id' ? 'font-bold text-gray-700': 'text-gray-500' }}"
-                                            wire:click="sortBy('id')">
-                                            <span> S/N</span>
-                                            <span class="transition">
-                                                <i
-                                                    class="fa-solid fa-angle-up {{ $sortField == 'id' && $sortAsc == 'desc' ? 'rotate-180' : '' }}"></i>
-                                            </span>
-                                        </button>
-                                    </th>
-                                    <th class="p-4">
-                                        <button
-                                            class="cursor-pointer uppercase {{ $sortField == 'name' ? 'font-bold text-gray-700': '' }}"
-                                            wire:click="sortBy('name')">
-                                            <span> School name</span>
-                                            <span class="transition ">
-                                                <i
-                                                    class="fa-solid fa-angle-up {{ $sortField == 'name' && $sortAsc == 'desc' ? 'rotate-180' : '' }}"></i>
-                                            </span>
-                                        </button>
-                                    </th>
-                                    <th class="p-4">
-                                        <button
-                                            class="cursor-pointer uppercase {{ $sortField == 'domain' ? 'font-bold text-gray-700': '' }}"
-                                            wire:click="sortBy('domain')">
-                                            <span>domain</span>
-                                            <span class="transition ">
-                                                <i
-                                                    class="fa-solid fa-angle-up {{ $sortField == 'domain' && $sortAsc == 'desc' ? 'rotate-180' : '' }}"></i>
-                                            </span>
-                                        </button>
-                                    </th>
-                                    <th class="p-4">
-                                        <button
-                                            class="cursor-pointer uppercase {{ $sortField == 'created_at' ? 'font-bold text-gray-700': '' }}"
-                                            wire:click="sortBy('created_at')">
-                                            <span>Renewal date</span>
-                                            <span class="transition ">
-                                                <i
-                                                    class="fa-solid fa-angle-up {{ $sortField == 'created_at' && $sortAsc == 'desc' ? 'rotate-180' : '' }}"></i>
-                                            </span>
-                                        </button>
-                                    </th>
-                                    <th class="p-4">
-                                        <button
-                                            class="cursor-pointer uppercase {{ $sortField == 'status' ? 'font-bold text-gray-700': '' }}"
-                                            wire:click="sortBy('status')">
-                                            <span>status</span>
-                                            <span class="transition ">
-                                                <i
-                                                    class="fa-solid fa-angle-up {{ $sortField == 'status' && $sortAsc == 'desc' ? 'rotate-180' : '' }}"></i>
-                                            </span>
-                                        </button>
-                                    </th>
-                                    <th class="p-4">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($tenants as $tenant)
-                                <tr class="text-base border-b even:bg-gray-100 dark:even:bg-gray-700">
-                                    <td class="py-2 px-4 text-center">
-                                        <input type="checkbox" value="{{ $tenant->id }}" wire:model="checked"
-                                            class="select-input">
-                                    </td>
-                                    <td class="p-2">{{ $loop->iteration }}</td>
-                                    <td class="py-2 text-sm px-4 capitalize">{{ $tenant->name }}</td>
-                                    <td class="py-2 px-4">
-                                        <a href="{{ 'http://'.$tenant->domain }}" target="_blank"
-                                            class="text-sm hover:underline hover:text-blue-600">{{'www.'. $tenant->domain }}</a>
-                                    </td>
-                                    <td class="py-2 px-4">
-                                        <span class="text-sm">
-                                            {{ $tenant->created_at->addDays(300)->format('d M, Y') }}</span>
-                                    </td>
-                                    <td class="py-2 px-4"> <span
-                                            class="{{ statusColor($tenant->status) }} status">{{ $tenant->status }}</span>
-                                    </td>
-                                    <td class="p-2 space-x-2 flex items-center whitespace-nowrap">
-                                        <button wire:click="editTenant({{ $tenant->id }})" data-tooltip-target="edit"
-                                            data-tooltip-placement="left"
-                                            class="h-7 w-7 border-blue-600 border rounded-md text-blue-600">
-                                            <i class="fa-solid fa-pen-to-square"></i>
-                                        </button>
-                                        <button wire:click="confirmDelete({{ $tenant->id }})"
-                                            data-tooltip-target="delete" data-tooltip-placement="left"
-                                            class="h-7 w-7 border-red-600 border rounded-md text-red-600">
-                                            <i class="fa-regular fa-trash-can"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                @empty
-
-                                @endforelse
-                                {{-- edit tooltip --}}
-                                <x-tooltip pers="edit" content="Edit School" />
-
-                                {{-- edit tooltip --}}
-                                <x-tooltip pers="delete" content="Delete School" />
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="p-4">
-                        {{ $tenants->links() }}
-                    </div>
+                    </tbody>
+                </table>
+            </div>
+            <div class="p-4">
+                {{ $tenants->links() }}
+            </div>
         </div>
     </div>
+    <x-form.center title="School" :update="$update" class="gap-6">
+        <x-input.text label="School Name" name="name" />
+        <x-input.text label="Domain name" placeholder="bolaji@app.com" name="domain" />
+    </x-form.center>
 </div>

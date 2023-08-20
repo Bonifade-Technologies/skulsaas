@@ -28,7 +28,7 @@ Route::group(['prefix' => 'academics', 'middleware' => ['auth', 'role:superadmin
     Route::get('/terms', \App\Http\Livewire\Terms::class)->name('academics.terms');
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:superadmin|admin']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function () {
     Route::get('/settings', \App\Http\Livewire\Settings::class)->name('settings');
 });
 

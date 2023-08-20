@@ -17,10 +17,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             LaratrustSeeder::class,
-            TenantSeeder::class,
-            UserSeeder::class,
-            YearSeeder::class,
-            TermSeeder::class,
+            // TenantSeeder::class,
+            // UserSeeder::class,
+            // YearSeeder::class,
+            // TermSeeder::class,
         ]);
     }
 }

@@ -34,16 +34,19 @@ class Tenant extends Model
     {
         parent::boot();
         self::creating(function ($tenant) {
+            $slug = Str::slug($tenant->name);
+            $tenant->status = 'created';
+            $tenant->domain = $tenant->domain ?? $slug;
+        });
+        self::created(function ($tenant) {
             $tenant->setting()->create([
                 'school_name' => $tenant->name,
                 'school_country' => 'Nigeria',
                 'country_code' => '+234',
                 'school_email' => 'info@' . Str::slug($tenant->name) . '.com',
             ]);
-            $slug = Str::slug($tenant->name);
-            $tenant->domain = $tenant->domain ?? $slug;
 
-            auth()->user() ? $tenant->users()->attach(auth()->user()->id) : null; // attach user to tenants
+            auth()->user() ? auth()->user()->tenants()->attach($tenant->id) : null; // attach user to tenants if authenticated
         });
     }
 }

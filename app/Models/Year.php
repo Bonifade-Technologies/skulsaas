@@ -21,6 +21,7 @@ class Year extends Model
         self::creating(function ($model) {
             Year::query()->update(['is_current' => false]);
             $model->is_current = true;
+            // $model->tenant_id = true;
         });
 
 

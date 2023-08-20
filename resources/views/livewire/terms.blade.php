@@ -70,7 +70,7 @@ $allSessions = \App\Models\Year::get();
         </div>
     </div>
     {{-- form --}}
-    {{-- <x-form.center title="Term" :update="$update" class="gap-6" /> --}}
+
     <x-form.right title="Session" :update="$update" class="gap-6">
         <form wire:submit.prevent="addSession">
             <div class="space-y-4">

@@ -38,6 +38,6 @@ class UniqueSchoolTypeTenantRule implements Rule
      */
     public function message()
     {
-        return 'The school type already exist';
+        return 'The school category already exist';
     }
 }

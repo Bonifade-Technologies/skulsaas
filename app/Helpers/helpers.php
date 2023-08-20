@@ -28,8 +28,8 @@ function getCountries()
 
 function settings()
 {
- return \App\Models\Setting::with('media')->first();
- // return \App\Models\Setting::where('tenant_id', auth()->user()->id)->with('media')->first();
+ // return \App\Models\Setting::with('media')->first();
+ return \App\Models\Setting::with('media')->where('tenant_id', auth()->user()->id)->first();
 }
 function redirectback()
 {

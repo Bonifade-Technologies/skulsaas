@@ -123,7 +123,7 @@ class Settings extends Component
     function updateSchoolType()
     {
         $data = $this->validate(
-            ['name' => ['required', new UniqueSchoolTypeTenantRule]],
+            ['name' => ['required']],
             ['name.required' => 'School type cannot be empty']
         );
 

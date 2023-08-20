@@ -17,7 +17,7 @@ trait FilterByTenant
   parent::boot();
 
   self::creating(function ($model) {
-   $model->tenant_id = auth()->user()->current_tenant_id;
+   $model->tenant_id = auth()->user() ? auth()->user()->current_tenant_id : null;
   });
 
   self::addGlobalScope(function (Builder $builder) {

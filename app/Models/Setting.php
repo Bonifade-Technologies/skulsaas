@@ -21,14 +21,6 @@ class Setting extends Model implements HasMedia
         'payment_method' => 'array',
     ];
 
-    static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-
-        });
-    }
-
     function registerMediaCollections(): void
     {
         $this->addMediaCollection('setting')

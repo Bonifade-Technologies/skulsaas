@@ -11,6 +11,7 @@ use Livewire\WithPagination;
 class Tenants extends Component
 {
     use LivewireAlert, WithPagination;
+    public $name, $status, $domain, $tenant;
     public $cid;
     public $update = false;
     public $form = false;
@@ -36,7 +37,45 @@ class Tenants extends Component
         }
         $this->sortField = $field;
     }
+    function save()
+    {
+        $data = $this->validate([
+            'name' => ['required', 'unique:tenants,name'],
+            'domain' => ['nullable', 'unique:tenants,domain', 'ends_with:'],
+            'status' => ['nullable'],
+        ]);
 
+        $saved = Tenant::create($data);
+        if ($saved) {
+            $this->reset();
+            $this->alert('success', 'School added successfully');
+        }
+    }
+
+    function editSchool(Tenant $tenant)
+    {
+        $this->tenant = $tenant;
+        $this->cid = $tenant->id;
+        $this->name = $tenant->name;
+        $this->domain = $tenant->domain;
+        $this->status = $tenant->status;
+        $this->form = true;
+        $this->update = true;
+    }
+
+    function update()
+    {
+        $data = $this->validate([
+            'name' => ['required', 'unique:tenants,name,' . $this->cid],
+            'domain' => ['nullable', 'unique:tenants,domain,' . $this->cid],
+            'status' => ['nullable'],
+        ]);
+        $update = $this->tenant->update($data);
+        if ($update) {
+            $this->reset();
+            $this->alert('success', 'School updated successfully');
+        }
+    }
 
     public function render()
     {
