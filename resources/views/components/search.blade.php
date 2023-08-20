@@ -1,4 +1,4 @@
-<div class="">
+<div class="min-w-[200px]">
     <label for="products-search" class="sr-only">Search</label>
     <div class="relative w-full mt-1 max-w-[250px]">
         <input wire:model.debounce.500ms="search" type="text" id="products-search"

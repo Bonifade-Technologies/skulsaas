@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Livewire;
+
+use App\Models\Tenant;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
@@ -8,7 +10,7 @@ class Tenants extends Component
 {
     use LivewireAlert;
     public $cid;
-     public $update = false;
+    public $update = false;
     public $form = false;
 
     public ?array $checked = [];
@@ -17,13 +19,28 @@ class Tenants extends Component
     public $sortAsc = true;
     public $search = '';
 
-      function showForm()
+    function showForm()
     {
         $this->form = true;
     }
 
+    public function sortBy($field)
+    {
+        if ($this->sortField == $field) {
+            $this->sortAsc = !$this->sortAsc;
+        } else {
+            $this->sortAsc = true;
+        }
+        $this->sortField = $field;
+    }
+
     public function render()
     {
-        return view('livewire.tenants');
+        $term = "%$this->search%";
+        $tenants = Tenant::
+            where('name', 'LIKE', $term)
+            ->orderBy('id')
+            ->paginate($this->perPage);
+        return view('livewire.tenants', compact(['tenants']));
     }
 }

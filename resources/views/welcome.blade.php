@@ -48,7 +48,19 @@
     </div>
     @livewireScripts
 
-
+    <div>
+      <p class=""></p>
+      <p class=""></p>
+      <p class="border-green-500 text-green-500"></p>
+      <p class="border-green-300 text-green-300"></p>
+      <p class="border-orange-400 text-orange-400"></p>
+      <p class="border-red-500 text-red-500"></p>
+      <p class="border-red-900 text-red-900"></p>
+      <p class="border-gray-500 text-gray-50"></p>
+      <p class="border-green-300  text-green-300"></p>
+      <p class=""></p>
+      <p class=""></p>
+    </div>
     {{-- sweetalert --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>

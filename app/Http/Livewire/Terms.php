@@ -93,7 +93,7 @@ class Terms extends Component
     function editTerm(Term $term)
     {
         if ($term->id != $this->lastTerm()->id || $term->year_id != $this->lastTerm()->year_id) {
-            return $this->alert('error', 'You cannot edit term from pass session');
+            return $this->alert('error', 'You cannot edit data from past term');
         } else {
             $this->name = $term->name;
             $this->start = $term->start->format('Y-m-d');
@@ -149,7 +149,7 @@ class Terms extends Component
     public function confirmDelete(Term $term)
     {
         if ($term->id != $this->lastTerm()->id) {
-            return $this->alert('error', 'You cannot delete term from pass session');
+            return $this->alert('error', 'You cannot delete data from pass term');
         } else {
             $this->cid = $term->id;
             $this->confirm = true;

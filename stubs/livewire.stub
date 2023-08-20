@@ -22,6 +22,16 @@ class [class] extends Component
         $this->form = true;
     }
 
+     public function sortBy($field)
+    {
+        if ($this->sortField == $field) {
+            $this->sortAsc = !$this->sortAsc;
+        } else {
+            $this->sortAsc = true;
+        }
+        $this->sortField = $field;
+    }
+
     public function render()
     {
         return view('[view]');

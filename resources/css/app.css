@@ -8,6 +8,12 @@
     body {
         @apply font-normal;
     }
+    .select-input {
+        @apply rounded text-primary border shadow-white bg-white focus:ring-0 focus:outline-none border-gray-200 focus:border-0;
+    }
+    .status {
+        @apply px-2 text-xs capitalize py-1 rounded-full bg-white border;
+    }
     .z-60 {
         z-index: 60;
     }
