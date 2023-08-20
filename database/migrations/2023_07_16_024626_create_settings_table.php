@@ -28,7 +28,6 @@ return new class extends Migration {
             $table->json('currencies')->nullable();
             $table->string('school_phone')->nullable();
             $table->string('school_type')->nullable(); //multiple or single school
-            $table->string('country')->nullable();
             $table->string('paystack_pk')->nullable();
             $table->json('payment_method')->nullable();
             $table->softDeletes();

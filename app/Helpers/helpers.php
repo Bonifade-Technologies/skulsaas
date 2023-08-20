@@ -35,17 +35,15 @@ function redirectback()
  return redirect()->back();
 }
 
+
 function currentUserPermissions(): array|null
 {
  $permissions = \App\Models\Permission::
   select('name')
   ->whereRelation('users', 'id', Auth::id())
   ->orWhereRelation('roles', 'id', auth()->user()->current_role_id)
-  ->get();
- $result = [];
- foreach ($permissions as $perm) {
-  array_push($result, $perm->name);
- }
- return $result;
+  ->pluck('name')
+  ->toArray();
+ return $permissions;
 }
 ?>
