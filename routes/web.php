@@ -18,7 +18,6 @@ Route::get('/', function () {
 });
 Route::get('/test', function () {
     return currentUserPermissions();
-    // return \App\Models\Year::with('terms')->get()->toArray();
 });
 
 Route::get('/home', function () {
@@ -30,5 +29,6 @@ Route::group(['prefix' => 'academics', 'middleware' => ['auth', 'role:superadmin
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:superadmin|admin']], function () {
+    Route::get('/terms', \App\Http\Livewire\Tenants::class)->name('academics.terms');
     Route::get('/settings', \App\Http\Livewire\Settings::class)->name('settings');
 });
