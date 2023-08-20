@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 
 class TenantSeeder extends Seeder
 {
-    use WithoutModelEvents;
+    // use WithoutModelEvents;
     /**
      * Run the database seeds.
      *
@@ -16,11 +16,6 @@ class TenantSeeder extends Seeder
      */
     public function run()
     {
-        Tenant::create([
-            'name' => 'bonifade'
-        ]);
-        Tenant::create([
-            'name' => 'acce'
-        ]);
+        Tenant::factory(150)->create();
     }
 }

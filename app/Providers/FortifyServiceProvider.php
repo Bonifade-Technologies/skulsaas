@@ -60,7 +60,7 @@ class FortifyServiceProvider extends ServiceProvider
             ) {
                 // update the current user role and current tenants
                 $user->update(['current_role_id' => $user->roles[0]->id]);
-                $user->hasRole('superadmin') ? $user->update([['current_tenant_id' => $user->tenants[0]->id]]) : null;
+                $user->hasRole('superadmin') ? $user->update(['current_tenant_id' => $user->tenants[0]->id]) : null;
                 return $user;
             }
         });

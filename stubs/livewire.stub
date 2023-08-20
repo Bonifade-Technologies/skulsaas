@@ -34,6 +34,12 @@ class [class] extends Component
 
     public function render()
     {
+         $term = "%$this->search%";
+        $models = model::
+            where('name', 'LIKE', $term)
+            ->orderBy('id')
+            ->orderBy($this->sortField, $this->sortAsc ? 'desc' : 'asc')
+            ->paginate($this->perPage);
         return view('[view]');
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Rules\UniqueSchoolTypeTenantRule;
 use Livewire\Component;
 use App\Models\SchoolType;
+use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Http;
@@ -102,10 +104,10 @@ class Settings extends Component
     function saveSchoolName()
     {
         $data = $this->validate(
-            ['name' => 'required|unique:school_types,name'],
+            ['name' => ['required', new UniqueSchoolTypeTenantRule]],
             ['name.unique' => 'School type already exist']
         );
-
+        $data['slug'] = Str::slug($data['name'] . "-" . auth()->user()->current_tenant_id);
         $saved = SchoolType::create($data);
         if ($saved) {
             redirect(request()->header('Referer'));
@@ -121,12 +123,12 @@ class Settings extends Component
     function updateSchoolType()
     {
         $data = $this->validate(
-            ['name' => 'required|unique:school_types,name,' . $this->cid],
+            ['name' => ['required', new UniqueSchoolTypeTenantRule]],
             ['name.required' => 'School type cannot be empty']
         );
 
         $cat = SchoolType::findOrFail($this->cid);
-
+        $data['slug'] = Str::slug($data['name'] . "-" . auth()->user()->current_tenant_id);
         $saved = $cat->update($data);
         if ($saved) {
             $this->reset();

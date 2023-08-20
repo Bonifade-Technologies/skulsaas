@@ -25,9 +25,7 @@ class Setting extends Model implements HasMedia
     {
         parent::boot();
         self::created(function ($model) {
-            $don = config(['schoolname' => $model->school_name]);
-            // $model->getFirstMedia('setting')->setFileName($don)->save();
-            \Log::info(config('schoolname'));
+
         });
     }
 

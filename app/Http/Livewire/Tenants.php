@@ -3,12 +3,14 @@
 namespace App\Http\Livewire;
 
 use App\Models\Tenant;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Tenants extends Component
 {
-    use LivewireAlert;
+    use LivewireAlert, WithPagination;
     public $cid;
     public $update = false;
     public $form = false;
@@ -26,6 +28,7 @@ class Tenants extends Component
 
     public function sortBy($field)
     {
+
         if ($this->sortField == $field) {
             $this->sortAsc = !$this->sortAsc;
         } else {
@@ -34,12 +37,14 @@ class Tenants extends Component
         $this->sortField = $field;
     }
 
+
     public function render()
     {
         $term = "%$this->search%";
         $tenants = Tenant::
             where('name', 'LIKE', $term)
-            ->orderBy('id')
+            ->orWhere('status', 'LIKE', $term)
+            ->orderBy($this->sortField, $this->sortAsc ? 'desc' : 'asc')
             ->paginate($this->perPage);
         return view('livewire.tenants', compact(['tenants']));
     }

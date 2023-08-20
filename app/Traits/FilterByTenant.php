@@ -17,11 +17,11 @@ trait FilterByTenant
   parent::boot();
 
   self::creating(function ($model) {
-   $model->tenant_id = auth()->user()->tenants()->first()->id;
+   $model->tenant_id = auth()->user()->current_tenant_id;
   });
 
   self::addGlobalScope(function (Builder $builder) {
-   $builder->where('tenant_id', auth()->user()->tenants()->first()->id);
+   $builder->where('tenant_id', auth()->user()->current_tenant_id);
   });
  }
 }

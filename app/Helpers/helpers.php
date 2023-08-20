@@ -29,6 +29,7 @@ function getCountries()
 function settings()
 {
  return \App\Models\Setting::with('media')->first();
+ // return \App\Models\Setting::where('tenant_id', auth()->user()->id)->with('media')->first();
 }
 function redirectback()
 {
@@ -68,6 +69,9 @@ function statusColor($status)
    $color = "border-green-500 text-wgreen-500";
    break;
   case 'debit':
+   $color = "border-red-500 text-red-500";
+   break;
+  case 'expired':
    $color = "border-red-500 text-red-500";
    break;
   case 'graduated':
