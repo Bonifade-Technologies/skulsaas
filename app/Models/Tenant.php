@@ -41,6 +41,7 @@ class Tenant extends Model
         });
         self::created(function ($tenant) {
             $tenant->setting()->create([
+                'tenant_id' => $tenant->id,
                 'school_name' => $tenant->name,
                 'school_country' => 'Nigeria',
                 'country_code' => '+234',

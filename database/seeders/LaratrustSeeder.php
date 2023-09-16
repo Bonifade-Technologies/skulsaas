@@ -70,6 +70,7 @@ class LaratrustSeeder extends Seeder
                     'current_tenant_id' => 1
                 ]);
                 $user->attachRole($role);
+                $user->tenants()->attach(1);
             }
         }
     }
