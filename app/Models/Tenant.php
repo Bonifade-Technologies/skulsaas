@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Facades\Auth;
 
 class Tenant extends Model
 {
@@ -45,8 +46,10 @@ class Tenant extends Model
                 'country_code' => '+234',
                 'school_email' => 'info@' . Str::slug($tenant->name) . '.com',
             ]);
-            auth()->user()->update(['current_tenant_id' => $tenant->id]);
-            auth()->user()->tenants()->attach($tenant->id); // attach user to tenants if authenticated
+            if (Auth::check()) {
+                auth()->user()->update(['current_tenant_id' => $tenant->id]);
+                auth()->user()->tenants()->attach($tenant->id); // attach user to tenants if authenticated
+            }
         });
     }
 }
