@@ -29,7 +29,7 @@ function getCountries()
 function settings()
 {
     //  return \App\Models\Setting::with('media')->first();
-    return \App\Models\Setting::with('media')->where('tenant_id', auth()->user()->current_tenant_id)->first();
+    return \App\Models\Setting::first();
 }
 function redirectback()
 {

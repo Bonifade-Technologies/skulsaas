@@ -52,7 +52,8 @@ class Settings extends Component
                 ],
                 'school_email' => [
                     'required',
-                    'email', Rule::unique('settings', 'school_email')->ignore($this->con->id)
+                    'email',
+                    Rule::unique('settings', 'school_email')->ignore($this->con->id)
                 ]
             ],
             [
@@ -147,6 +148,7 @@ class Settings extends Component
         $this->school_name = $this->con?->school_name;
         $this->school_phone = $this->con?->school_phone;
     }
+
     public function render()
     {
 

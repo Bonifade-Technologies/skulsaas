@@ -11,7 +11,8 @@
             class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
             <div class="items-center sm:flex xl:block 2xl:flex sm:space-x-4 xl:space-x-0 2xl:space-x-4">
                 <input type="file" wire:model.defer="school_logo" id="school_logo" class="hidden">
-                <img src="{{ settings()->getFirstMediaUrl('setting') }}" alt="{{ $con?->school_logo }}"
+                <img src="{{ $school_logo?->temporaryUrl() ?? settings()->getFirstMediaUrl('setting') }}"
+                    alt="{{ $school_logo }}"
                     class="object-cover w-20 h-20 mt-2 border border-gray-200 rounded-full shadow lg:h-24 lg:w-24 xl:h-28 xl:w-28">
                 <div>
                     <h3 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">School Logo
@@ -40,10 +41,7 @@
                             </button>
                         @else
                             <label for="school_logo"
-                                class="px-4 py-2 text-sm text-black bg-gray-200 rounded-full shadow cursor-pointer">{{ $con?->school_logo
-                                    ? 'Change logo'
-                                    : 'Choose
-                                                            Logo' }}</label>
+                                class="px-4 py-2 text-sm text-black bg-gray-200 rounded-full shadow cursor-pointer">{{ $school_logo ? 'Change logo' : 'Choose Logo' }}</label>
                         @endif
                         @if ($school_logo)
                             <button wire:click="removeLogo()"
@@ -92,7 +90,7 @@
     <div class="col-span-full xl:col-auto">
         <div
             class="p-4 mb-4 space-y-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
-            <h3 class="text-xl font-semibold  dark:text-white">School Categories</h3>
+            <h3 class="text-xl font-semibold dark:text-white">School Categories</h3>
             <form wire:submit.prevent="@if (!$update) saveSchoolName @else updateSchoolType @endif">
                 <div class="flex items-end justify-start gap-4">
                     <div class="max-w-[300px]">

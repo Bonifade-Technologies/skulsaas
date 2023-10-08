@@ -19,7 +19,7 @@
 
 @php
     $currentTerm = currentTerm();
-    $settings = \Route::currentRouteName() == 'settings' ? null : settings();
+    $settings = settings();
     $permissions = currentUserPermissions();
 @endphp
 
@@ -44,11 +44,11 @@
                         </svg>
                     </button>
                     <a href="/home" class="flex items-center ml-2 md:mr-24">
-                        <img src="{{ settings()->getFirstMediaUrl('setting') }}"
+                        <img src="{{ $settings?->getFirstMediaUrl('setting') }}"
                             class="object-cover w-16 h-auto mr-3 rounded-full aspect-square"
                             alt="{{ $settings?->school_name ?? 'Bonifade SMS' }}" />
                         <span
-                            class="self-center uppercase {{ strlen($settings?->school_name) > 15 ? 'text-xl' : 'text-3xl' }}  font-bold whitespace-nowrap dark:text-white">{{ settings()->school_name }}</span>
+                            class="self-center uppercase {{ strlen($settings?->school_name) > 15 ? 'text-xl' : 'text-3xl' }}  font-bold whitespace-nowrap dark:text-white">{{ $settings?->school_name }}</span>
                     </a>
                     {{-- <form action="#" method="GET" class="hidden lg:block lg:pl-3.5">
               <label for="topbar-search" class="sr-only">Search</label>
