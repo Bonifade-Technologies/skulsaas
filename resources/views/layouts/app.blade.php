@@ -591,7 +591,7 @@
 
         <div id="main-content"
             class="relative w-full h-full overflow-y-auto lg:ml-64 min-h-[700px]  bg-background-50 dark:bg-gray-800">
-            <main class="min-h-full pt-6">
+            <main class="min-h-full pt-12">
                 <div class="px-4">
                     @yield('content')
                     {{ $slot ?? '' }}
